@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 const HeaderLeft = ({ navigation }) => (
   <FontIcon.Button
     name="bars"
-    color="white"
+    color="black"
     backgroundColor="transparent"
     onPress={() => {
       navigation.dispatch(DrawerActions.openDrawer())
