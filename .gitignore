@@ -13,6 +13,3 @@ web-report/
 # IDE 
 .idea/
 .vscode/
-
-# Lock file
-yarn.lock
