@@ -27,6 +27,7 @@ module.exports = {
     'global-require': 'off',
     'no-console': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'no-unused-vars': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {

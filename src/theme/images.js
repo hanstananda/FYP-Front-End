@@ -2,9 +2,19 @@ import { Asset } from 'expo-asset'
 
 // svg
 import Logo from '../../assets/images/logo.svg'
+import Folder from '../../assets/images/folder.svg'
+import Info from '../../assets/images/information.svg'
+import Camera from '../../assets/images/photo-camera.svg'
+// import { ReactComponent as Logo } from '../../assets/images/logo.svg'
+// import { ReactComponent as Folder } from '../../assets/images/folder.svg'
+// import { ReactComponent as Info } from '../../assets/images/information.svg'
+// import {ReactComponent as Camera } from '../../assets/images/photo-camera.svg'
 
 export const svgs = {
   logo: Logo,
+  folder: Folder,
+  info: Info,
+  camera: Camera,
 }
 
 // png/jpeg
