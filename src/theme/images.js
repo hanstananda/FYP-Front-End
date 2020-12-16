@@ -21,6 +21,10 @@ export const svgs = {
 export const images = {
   logo_sm: require('../../assets/images/logo.png'),
   logo_lg: require('../../assets/images/logo.png'),
+  folder: require('../../assets/images/folder.png'),
+  info: require('../../assets/images/information.png'),
+  camera: require('../../assets/images/photo-camera.png'),
+  right_arrow: require('../../assets/images/right-arrow.png'),
 }
 
 // image preloading

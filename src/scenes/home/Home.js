@@ -28,17 +28,25 @@ const styles = StyleSheet.create({
     height: 70,
   },
   leftIconStyle: {
-    flex: 0.2,
-    backgroundColor: 'blue',
+    flex: 0.15,
+    // backgroundColor: 'blue',
+    alignItems: 'center', // Centered horizontally
+    justifyContent: 'center', // Centered vertically
+  },
+  iconStyle: {
+    height: 30,
+    width: 30,
   },
   midText: {
-    // flex: 0.7,
-    backgroundColor: colors.blue,
+    flex: 0.75,
+    // backgroundColor: colors.blue,
     alignItems: 'center',
   },
   rightIconStyle: {
     flex: 0.1,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
+    alignItems: 'center', // Centered horizontally
+    justifyContent: 'center', // Centered vertically
   },
   title: {
     fontSize: 20,
@@ -79,21 +87,17 @@ const Home = ({ navigation }) => (
     >
       <View style={styles.flexBox}>
         <View style={styles.leftIconStyle}>
-          <SvgUri
-            width="100%"
-            height="100%"
-            uri="http://thenewcode.com/assets/images/thumbnails/homer-simpson.svg"
-          />
+          <Image style={styles.iconStyle} source={images.camera} />
         </View>
         <View style={styles.midText}>
-          <Text style={styles.title}>Identify Snakes</Text>
+          <Text style={styles.title}>IDENTIFY SNAKES</Text>
           <Text style={styles.desc}>Came across a snake?</Text>
           <Text style={styles.desc}>
             Select its image and classify what it was
           </Text>
         </View>
         <View style={styles.rightIconStyle}>
-          <Text>Test</Text>
+          <Image style={styles.iconStyle} source={images.right_arrow} />
         </View>
       </View>
     </TouchableOpacity>
