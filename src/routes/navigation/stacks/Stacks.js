@@ -17,7 +17,7 @@ export const HomeNavigator = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: ({ navigation }) => ({
-      title: 'Home',
+      titleCameraButton: 'Home',
       headerLeft: <HeaderLeft navigation={navigation} />,
       headerTitle: <HeaderTitle />,
       ...navigationProps,
@@ -26,7 +26,7 @@ export const HomeNavigator = createStackNavigator({
   Details: {
     screen: Details,
     navigationOptions: () => ({
-      title: 'Details',
+      titleCameraButton: 'Details',
       ...navigationProps,
     }),
   },
@@ -36,7 +36,7 @@ export const ProfileNavigator = createStackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: ({ navigation }) => ({
-      title: 'Profile',
+      titleCameraButton: 'Profile',
       headerLeft: <HeaderLeft navigation={navigation} />,
       headerTitle: <HeaderTitle />,
       ...navigationProps,
@@ -45,7 +45,7 @@ export const ProfileNavigator = createStackNavigator({
   Details: {
     screen: Details,
     navigationOptions: () => ({
-      title: 'Details',
+      titleCameraButton: 'Details',
       ...navigationProps,
     }),
   },

@@ -48,14 +48,23 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Centered horizontally
     justifyContent: 'center', // Centered vertically
   },
-  title: {
+  titleCameraButton: {
     fontSize: 20,
     color: colors.white,
     marginBottom: 5,
   },
-  desc: {
+  titleInfoButton: {
+    fontSize: 20,
+    color: colors.darkGreen,
+    marginBottom: 5,
+  },
+  descCameraButton: {
     fontSize: 10,
     color: colors.white,
+  },
+  desInfoButton: {
+    fontSize: 10,
+    color: colors.darkGreen,
   },
   logo: {
     width: 150,
@@ -63,54 +72,77 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   button: {
-    color: colors.white,
-    backgroundColor: colors.orange,
     alignItems: 'center',
     minWidth: 200,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: colors.orange,
     marginBottom: 50,
+  },
+  camera_button: {
+    color: colors.white,
+    backgroundColor: colors.orange,
+    borderColor: colors.orange,
+  },
+  info_button: {
+    color: colors.black,
+    backgroundColor: colors.white,
+    borderColor: colors.darkGreen,
   },
 })
 
-const Home = ({ navigation }) => (
-  <View style={styles.root}>
-    <StatusBar barStyle="light-content" />
-    <Image style={styles.logo} source={images.logo_sm} />
-    {/* <Text style={styles.title}>Home</Text> */}
-    <TouchableOpacity
-      style={styles.button}
-      onPress={() => {
-        navigation.navigate('Details', { from: 'Home' })
-      }}
-    >
-      <View style={styles.flexBox}>
-        <View style={styles.leftIconStyle}>
-          <Image style={styles.iconStyle} source={images.camera} />
+const Home = ({ navigation }) => {
+  const btnCameraStyle = [styles.button, styles.camera_button]
+  const btnInfoStyle = [styles.button, styles.info_button]
+  return (
+    <View style={styles.root}>
+      <StatusBar barStyle="light-content" />
+      <Image style={styles.logo} source={images.logo_sm} />
+      {/* <Text style={styles.title}>Home</Text> */}
+      <TouchableOpacity
+        style={btnCameraStyle}
+        onPress={() => {
+          navigation.navigate('Details', { from: 'Home' })
+        }}
+      >
+        <View style={styles.flexBox}>
+          <View style={styles.leftIconStyle}>
+            <Image style={styles.iconStyle} source={images.camera} />
+          </View>
+          <View style={styles.midText}>
+            <Text style={styles.titleCameraButton}>IDENTIFY SNAKES</Text>
+            <Text style={styles.descCameraButton}>Came across a snake?</Text>
+            <Text style={styles.descCameraButton}>
+              Select its image and classify what it was
+            </Text>
+          </View>
+          <View style={styles.rightIconStyle}>
+            <Image style={styles.iconStyle} source={images.right_arrow} />
+          </View>
         </View>
-        <View style={styles.midText}>
-          <Text style={styles.title}>IDENTIFY SNAKES</Text>
-          <Text style={styles.desc}>Came across a snake?</Text>
-          <Text style={styles.desc}>
-            Select its image and classify what it was
-          </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={btnInfoStyle}
+        onPress={() => {
+          navigation.navigate('Details', { from: 'Home' })
+        }}
+      >
+        <View style={styles.flexBox}>
+          <View style={styles.leftIconStyle}>
+            <Image style={styles.iconStyle} source={images.info} />
+          </View>
+          <View style={styles.midText}>
+            <Text style={styles.titleInfoButton}>FIELD GUIDE</Text>
+            <Text style={styles.desInfoButton}>Learn more about snakes</Text>
+          </View>
+          <View style={styles.rightIconStyle}>
+            <Image style={styles.iconStyle} source={images.right_arrow} />
+          </View>
         </View>
-        <View style={styles.rightIconStyle}>
-          <Image style={styles.iconStyle} source={images.right_arrow} />
-        </View>
-      </View>
-    </TouchableOpacity>
-    {/* <Button */}
-    {/*  title="Identify Snakes" */}
-    {/*  color="white" */}
-    {/*  backgroundColor={colors.orange} */}
-    {/*  onPress={() => { */}
-    {/*    navigation.navigate('Details', { from: 'Home' }) */}
-    {/*  }} */}
-    {/* /> */}
-  </View>
-)
+      </TouchableOpacity>
+    </View>
+  )
+}
 
 Home.propTypes = {
   navigation: PropTypes.shape({
