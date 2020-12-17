@@ -25,6 +25,7 @@ export const images = {
   info: require('../../assets/images/information.png'),
   camera: require('../../assets/images/photo-camera.png'),
   right_arrow: require('../../assets/images/right-arrow.png'),
+  sample_snake: require('../../assets/images/sample_snake.jpg'),
 }
 
 // image preloading
