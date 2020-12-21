@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {
   TouchableOpacity, Text, View, Image,
 } from 'react-native'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 const styles = {
   root: {
@@ -47,7 +47,7 @@ const MenuOption = ({
     <TouchableOpacity onPress={onPress} style={btnStyle}>
       <View style={styles.flexBox}>
         <View style={styles.leftIconStyle}>
-          <FontAwesomeIcon icon={icon} size={32} />
+          {/* <FontAwesomeIcon icon={icon} size={32} /> */}
         </View>
 
         <View style={styles.midText}>
