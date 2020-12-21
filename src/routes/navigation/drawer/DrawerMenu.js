@@ -13,8 +13,10 @@ const styles = {
     paddingHorizontal: 10,
   },
   head: {
+    padding: 10,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'left',
   },
   main: {
     flexDirection: 'column',
@@ -26,15 +28,16 @@ const styles = {
 const DrawerMenu = ({ navigation }) => (
   <SafeAreaView style={styles.root}>
     <View style={styles.head}>
-      <FontIcon.Button
-        name="times"
-        size={20}
-        color={colors.gray}
-        backgroundColor="white"
-        onPress={() => {
-          navigation.dispatch(DrawerActions.closeDrawer())
-        }}
-      />
+      <Text style={{ size: 20, fontWeight: 'bold' }}>By Hans Tananda</Text>
+      {/* <FontIcon.Button */}
+      {/*  name="times" */}
+      {/*  size={20} */}
+      {/*  color={colors.gray} */}
+      {/*  backgroundColor="white" */}
+      {/*  onPress={() => { */}
+      {/*    navigation.dispatch(DrawerActions.closeDrawer()) */}
+      {/*  }} */}
+      {/* /> */}
     </View>
     {/* <Text>Drawer Menu</Text> */}
     <View style={styles.main}>
