@@ -4,7 +4,7 @@ import { View, SafeAreaView, Text } from 'react-native'
 import { DrawerActions } from 'react-navigation-drawer'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
-import MenuOption from 'components/MenuOption'
+import MenuOption from '../../../components/MenuOption'
 
 const styles = {
   root: {
@@ -17,10 +17,9 @@ const styles = {
     justifyContent: 'flex-end',
   },
   main: {
-    flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'left',
   },
 }
 
@@ -37,10 +36,44 @@ const DrawerMenu = ({ navigation }) => (
         }}
       />
     </View>
+    {/* <Text>Drawer Menu</Text> */}
     <View style={styles.main}>
-      <MenuOption title="test" />
+      <MenuOption
+        title="Home"
+        icon="home"
+        onPress={() => {
+          navigation.navigate('Home')
+        }}
+      />
+      <MenuOption
+        title="Map View"
+        icon="map"
+        onPress={() => {
+          navigation.navigate('Details', { from: 'Home' })
+        }}
+      />
+      <MenuOption
+        title="Snakes Guide"
+        icon="info-circle"
+        onPress={() => {
+          navigation.navigate('Details', { from: 'Home' })
+        }}
+      />
+      <MenuOption
+        title="Identify Snakes"
+        icon="camera"
+        onPress={() => {
+          navigation.navigate('Details', { from: 'Home' })
+        }}
+      />
+      <MenuOption
+        title="Sign In"
+        icon="sign-in-alt"
+        onPress={() => {
+          navigation.navigate('Details', { from: 'Home' })
+        }}
+      />
     </View>
-    <Text>Drawer Menu</Text>
   </SafeAreaView>
 )
 

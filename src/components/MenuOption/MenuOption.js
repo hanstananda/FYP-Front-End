@@ -4,78 +4,76 @@ import {
   TouchableOpacity, Text, View, Image,
 } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const styles = {
   root: {
     paddingVertical: 8,
     paddingHorizontal: 16,
-    borderRadius: 5,
-    flex: 1,
   },
   flexBox: {
     flex: 1,
+    flexDirection: 'row',
+    minHeight: 50,
   },
   text: {
-    textAlign: 'center',
     fontSize: 20,
+    fontWeight: '600',
+  },
+  leftIconStyle: {
+    flex: 0.15,
+    alignItems: 'center', // Centered horizontally
+    justifyContent: 'center', // Centered vertically
+  },
+  midText: {
+    flex: 0.85,
+    paddingLeft: 20,
+    alignItems: 'left', // Centered horizontally
+    justifyContent: 'center', // Centered vertically
   },
 }
 
 const MenuOption = ({
   title,
-  width,
-  height,
+  icon,
   color,
   backgroundColor,
   onPress,
-  children,
   textStyle,
   style,
 }) => {
-  const btnStyle = [styles.root, { width, height, backgroundColor }, style]
+  const btnStyle = [styles.root, { backgroundColor }, style]
   const txtStyle = [styles.text, { color }, textStyle]
   return (
     <TouchableOpacity onPress={onPress} style={btnStyle}>
-      <View>
+      <View style={styles.flexBox}>
         <View style={styles.leftIconStyle}>
-          <FontAwesomeIcon icon={faCoffee} />
+          <FontAwesomeIcon icon={icon} size={32} />
         </View>
-        {/* <View style={styles.midText}> */}
-        {/*  <Text style={styles.titleCameraButton}>IDENTIFY SNAKES</Text> */}
-        {/*  <Text style={styles.descCameraButton}>Came across a snake?</Text> */}
-        {/*  <Text style={styles.descCameraButton}> */}
-        {/*    Select its image and classify what it was */}
-        {/*  </Text> */}
-        {/* </View> */}
-      </View>
 
-      {title && <Text style={txtStyle}>{title}</Text>}
-      {children}
+        <View style={styles.midText}>
+          {title && <Text style={txtStyle}>{title}</Text>}
+        </View>
+      </View>
     </TouchableOpacity>
   )
 }
 
 MenuOption.propTypes = {
   title: PropTypes.string,
-  width: PropTypes.string,
-  height: PropTypes.string,
+  icon: PropTypes.string,
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
   onPress: PropTypes.func,
-  children: PropTypes.string,
   textStyle: PropTypes.shape({}),
   style: PropTypes.shape({}),
 }
 
 MenuOption.defaultProps = {
   title: null,
-  width: 'auto',
-  height: 'auto',
+  icon: 'coffee',
   color: 'black',
-  backgroundColor: '#cacaca',
+  backgroundColor: 'auto',
   onPress: () => {},
-  children: null,
   textStyle: {},
   style: {},
 }

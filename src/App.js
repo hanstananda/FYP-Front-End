@@ -4,10 +4,35 @@ import { Provider } from 'react-redux'
 import store from 'utils/store'
 import 'utils/ignore'
 
+// Icons
+import { library } from '@fortawesome/fontawesome-svg-core'
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+import {
+  faMap,
+  faMapMarkerAlt,
+  faHome,
+  faInfoCircle,
+  faCamera,
+  faSignInAlt,
+  faSignOutAlt,
+  faCoffee,
+} from '@fortawesome/free-solid-svg-icons'
+
 // assets
 import { imageAssets } from 'theme/images'
 import { fontAssets } from 'theme/fonts'
 import Router from './routes'
+
+library.add(
+  faMap,
+  faCoffee,
+  faMapMarkerAlt,
+  faHome,
+  faInfoCircle,
+  faCamera,
+  faSignInAlt,
+  faSignOutAlt,
+)
 
 const App = () => {
   // state
