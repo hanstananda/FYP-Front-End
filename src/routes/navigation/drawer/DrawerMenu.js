@@ -4,6 +4,7 @@ import { View, SafeAreaView, Text } from 'react-native'
 import { DrawerActions } from 'react-navigation-drawer'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
+import MenuOption from 'components/MenuOption'
 
 const styles = {
   root: {
@@ -17,7 +18,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -37,8 +38,9 @@ const DrawerMenu = ({ navigation }) => (
       />
     </View>
     <View style={styles.main}>
-      <Text>Drawer Menu</Text>
+      <MenuOption title="test" />
     </View>
+    <Text>Drawer Menu</Text>
   </SafeAreaView>
 )
 
