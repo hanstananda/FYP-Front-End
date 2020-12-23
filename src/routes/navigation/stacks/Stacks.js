@@ -4,6 +4,7 @@ import { colors } from 'theme'
 import Home from 'scenes/home'
 import Profile from 'scenes/profile'
 import Details from 'scenes/details'
+import SnakesList from 'scenes/snakes_guide'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
 
@@ -25,8 +26,19 @@ export const HomeNavigator = createStackNavigator({
   },
   Details: {
     screen: Details,
-    navigationOptions: () => ({
+    navigationOptions: ({ navigation }) => ({
       titleCameraButton: 'Details',
+      headerLeft: <HeaderLeft navigation={navigation} />,
+      headerTitle: <HeaderTitle />,
+      ...navigationProps,
+    }),
+  },
+  SnakesList: {
+    screen: SnakesList,
+    navigationOptions: ({ navigation }) => ({
+      titleCameraButton: 'SnakesList',
+      headerLeft: <HeaderLeft navigation={navigation} />,
+      headerTitle: <HeaderTitle />,
       ...navigationProps,
     }),
   },

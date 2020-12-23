@@ -57,7 +57,7 @@ const DrawerMenu = ({ navigation }) => (
         title="Snakes Guide"
         icon="info-circle"
         onPress={() => {
-          navigation.navigate('Details', { from: 'Snakes Guide' })
+          navigation.navigate('SnakesList', { from: 'Snakes Guide' })
         }}
       />
       <MenuOption
