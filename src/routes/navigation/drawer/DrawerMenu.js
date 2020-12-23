@@ -50,7 +50,7 @@ const DrawerMenu = ({ navigation }) => (
         title="Map View"
         icon="map"
         onPress={() => {
-          navigation.navigate('Details', { from: 'Map View' })
+          navigation.navigate('MapView', { from: 'Map View' })
         }}
       />
       <MenuOption
