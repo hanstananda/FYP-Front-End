@@ -37,17 +37,73 @@ const itemList = {
   items: [
     {
       id: 0,
-      name: 'test1',
+      name: 'test0',
       description: 'test1111',
+      image: 'sample_snake',
+      key: 'test0',
+    },
+    {
+      id: 1,
+      name: 'test1',
+      description: 'test222',
       image: 'sample_snake',
       key: 'test1',
     },
     {
-      id: 1,
+      id: 2,
       name: 'test2',
       description: 'test222',
       image: 'sample_snake',
       key: 'test2',
+    },
+    {
+      id: 3,
+      name: 'test3',
+      description: 'test222',
+      image: 'sample_snake',
+      key: 'test3',
+    },
+    {
+      id: 4,
+      name: 'test4',
+      description: 'test222',
+      image: 'sample_snake',
+      key: 'test4',
+    },
+    {
+      id: 5,
+      name: 'test5',
+      description: 'test222',
+      image: 'sample_snake',
+      key: 'test5',
+    },
+    {
+      id: 6,
+      name: 'test6',
+      description: 'test222',
+      image: 'sample_snake',
+      key: 'test6',
+    },
+    {
+      id: 7,
+      name: 'test7',
+      description: 'test222',
+      image: 'sample_snake',
+      key: 'test7',
+    },
+    {
+      id: 8,
+      name: 'test8',
+      description: 'test222',
+      image: 'sample_snake',
+      key: 'test8',
+    },
+    {
+      id: 9,
+      name: 'test9',
+      description: 'test222',
+      image: 'sample_snake',
+      key: 'test9',
     },
   ],
 }
@@ -59,7 +115,13 @@ const SnakesList = ({ navigation }) => (
       data={itemList.items}
       renderItem={({ item }) => (
         <View style={styles.main}>
-          <SnakeItem title={item.name} image={item.image} />
+          <SnakeItem
+            title={item.name}
+            image={item.image}
+            onPress={() => {
+              navigation.navigate('Details', { from: 'SnakesList' })
+            }}
+          />
         </View>
       )}
     />

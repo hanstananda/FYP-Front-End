@@ -54,7 +54,6 @@ const SnakeItem = ({
       <View style={styles.flexBox}>
         <View style={styles.leftIconStyle}>
           <Image style={styles.image} source={images.sample_snake} />
-          <Text>Test s</Text>
         </View>
 
         <View style={styles.midText}>
