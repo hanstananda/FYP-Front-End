@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {
   TouchableOpacity, Text, View, Image,
 } from 'react-native'
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 const styles = {
   root: {
@@ -21,13 +21,13 @@ const styles = {
   },
   leftIconStyle: {
     flex: 0.15,
-    alignItems: 'center', // Centered horizontally
+    // alignItems: 'center', // Centered horizontally
     justifyContent: 'center', // Centered vertically
   },
   midText: {
     flex: 0.85,
     paddingLeft: 20,
-    alignItems: 'left', // Centered horizontally
+    // alignItems: 'left', // Centered horizontally
     justifyContent: 'center', // Centered vertically
   },
 }
@@ -44,10 +44,10 @@ const MenuOption = ({
   const btnStyle = [styles.root, { backgroundColor }, style]
   const txtStyle = [styles.text, { color }, textStyle]
   return (
-    <TouchableOpacity onPress={onPress} style={btnStyle}>
+    <TouchableOpacity onPress={onPress} style={styles.flexBox}>
       <View style={styles.flexBox}>
         <View style={styles.leftIconStyle}>
-          {/* <FontAwesomeIcon icon={icon} size={32} /> */}
+          <FontAwesomeIcon icon={icon} size={32} />
         </View>
 
         <View style={styles.midText}>

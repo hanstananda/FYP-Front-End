@@ -16,19 +16,19 @@ const styles = {
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'left',
+    // alignItems: 'left',
   },
   main: {
-    flexDirection: 'column',
+    // flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'left',
+    // alignItems: 'left',
   },
 }
 
 const DrawerMenu = ({ navigation }) => (
   <SafeAreaView style={styles.root}>
     <View style={styles.head}>
-      <Text style={{ size: 20, fontWeight: 'bold' }}>By Hans Tananda</Text>
+      <Text style={{ fontSize: 20, fontWeight: 'bold' }}>By Hans Tananda</Text>
       {/* <FontIcon.Button */}
       {/*  name="times" */}
       {/*  size={20} */}
@@ -52,28 +52,28 @@ const DrawerMenu = ({ navigation }) => (
         title="Map View"
         icon="map"
         onPress={() => {
-          navigation.navigate('Details', { from: 'Home' })
+          navigation.navigate('Details', { from: 'Map View' })
         }}
       />
       <MenuOption
         title="Snakes Guide"
         icon="info-circle"
         onPress={() => {
-          navigation.navigate('Details', { from: 'Home' })
+          navigation.navigate('Details', { from: 'Snakes Guide' })
         }}
       />
       <MenuOption
         title="Identify Snakes"
         icon="camera"
         onPress={() => {
-          navigation.navigate('Details', { from: 'Home' })
+          navigation.navigate('Details', { from: 'Identify Snakes' })
         }}
       />
       <MenuOption
         title="Sign In"
         icon="sign-in-alt"
         onPress={() => {
-          navigation.navigate('Details', { from: 'Home' })
+          navigation.navigate('Details', { from: 'Sign In' })
         }}
       />
     </View>

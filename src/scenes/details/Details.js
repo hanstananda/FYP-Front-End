@@ -65,7 +65,7 @@ const Details = ({ navigation }) => {
           are recognized, which as a group are commonly referred to as the
           eastern racers
         </Text>
-        {/* <Text style={styles.title}>{`Details (from ${from})`}</Text> */}
+        <Text style={styles.title}>{`Details (from ${from})`}</Text>
         {/* <Button */}
         {/*  title="Go Back" */}
         {/*  color="white" */}
