@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import {
   TouchableOpacity, Text, View, Image,
 } from 'react-native'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { colors, images } from '../../theme'
+import { colors, images } from 'theme'
 
 const styles = {
   root: {

@@ -11,7 +11,6 @@ import {
 } from 'react-native'
 import { colors } from 'theme'
 import SnakeItem from 'components/SnakeItemList'
-import MenuOption from '../../components/MenuOption'
 
 const styles = StyleSheet.create({
   root: {
