@@ -16,12 +16,10 @@ const styles = {
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    // alignItems: 'left',
   },
   main: {
     // flexDirection: 'column',
-    justifyContent: 'center',
-    // alignItems: 'left',
+    // justifyContent: 'center',
   },
 }
 

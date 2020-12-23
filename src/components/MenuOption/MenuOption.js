@@ -21,13 +21,13 @@ const styles = {
   },
   leftIconStyle: {
     flex: 0.15,
-    // alignItems: 'center', // Centered horizontally
+    alignItems: 'center', // Centered horizontally
     justifyContent: 'center', // Centered vertically
   },
   midText: {
     flex: 0.85,
     paddingLeft: 20,
-    // alignItems: 'left', // Centered horizontally
+    alignItems: 'flex-start',
     justifyContent: 'center', // Centered vertically
   },
 }
@@ -41,10 +41,10 @@ const MenuOption = ({
   textStyle,
   style,
 }) => {
-  const btnStyle = [styles.root, { backgroundColor }, style]
+  const btnStyle = [styles.flexBox, { backgroundColor }, style]
   const txtStyle = [styles.text, { color }, textStyle]
   return (
-    <TouchableOpacity onPress={onPress} style={styles.flexBox}>
+    <TouchableOpacity onPress={onPress} style={btnStyle}>
       <View style={styles.flexBox}>
         <View style={styles.leftIconStyle}>
           <FontAwesomeIcon icon={icon} size={32} />
