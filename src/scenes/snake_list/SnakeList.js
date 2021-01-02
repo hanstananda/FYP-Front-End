@@ -36,78 +36,72 @@ const itemList = {
   items: [
     {
       id: 0,
-      name: 'test0',
-      description: 'test1111',
+      name: 'Asian vine snake',
+      latin_name: 'Ahaetulla prasine',
+      description: 'mildly venomous, non harmful to humans',
       image: 'sample_snake',
-      key: 'test0',
     },
     {
       id: 1,
-      name: 'test1',
-      description: 'test222',
+      name: 'many-banded krait',
+      latin_name: 'Bungarus multicinctus',
+      description: 'venomous',
       image: 'sample_snake',
-      key: 'test1',
     },
     {
       id: 2,
-      name: 'test2',
-      description: 'test222',
+      name: 'golden tree snake',
+      latin_name: 'Chrysopelea ornate',
+      description:
+        'mildly venomous, not considered so dangerous to humans that require medical importance',
       image: 'sample_snake',
-      key: 'test2',
     },
     {
       id: 3,
-      name: 'test3',
-      description: 'test222',
+      name: 'painted bronzeback',
+      latin_name: 'Dendrelaphis pictus',
+      description: 'non venomous',
       image: 'sample_snake',
-      key: 'test3',
     },
     {
       id: 4,
-      name: 'test4',
-      description: 'test222',
+      name: 'common mock viper',
+      latin_name: 'Psammodynastes pulverulentus',
+      description: 'non venomous',
       image: 'sample_snake',
-      key: 'test4',
     },
     {
       id: 5,
-      name: 'test5',
-      description: 'test222',
+      name: 'Indian rat snake',
+      latin_name: 'Ptyas mucosa',
+      description: 'non-venomous',
       image: 'sample_snake',
-      key: 'test5',
     },
     {
       id: 6,
-      name: 'test6',
-      description: 'test222',
+      name: 'red-necked keelback',
+      latin_name: 'Rhabdophis subminiatus',
+      description: 'venomous',
       image: 'sample_snake',
-      key: 'test6',
     },
     {
       id: 7,
-      name: 'test7',
-      description: 'test222',
+      name: 'white-lipped pit viper',
+      latin_name: 'Trimeresurus albolabris',
+      description: 'venomous',
       image: 'sample_snake',
-      key: 'test7',
     },
     {
       id: 8,
-      name: 'test8',
-      description: 'test222',
+      name: 'Reticulated Python',
+      latin_name: 'Malayopython reticulatus',
+      description: 'non-venomous',
       image: 'sample_snake',
-      key: 'test8',
-    },
-    {
-      id: 9,
-      name: 'test9',
-      description: 'test222',
-      image: 'sample_snake',
-      key: 'test9',
     },
   ],
 }
 
-const SnakesList = ({ navigation }) => (
+const SnakeList = ({ navigation }) => (
   <SafeAreaView style={styles.root}>
     <StatusBar barStyle="light-content" />
     <FlatList
@@ -116,9 +110,10 @@ const SnakesList = ({ navigation }) => (
         <View style={styles.main}>
           <SnakeItem
             title={item.name}
+            subtitle={item.latin_name}
             image={item.image}
             onPress={() => {
-              navigation.navigate('Details', { from: 'SnakesList' })
+              navigation.navigate('Details', { from: 'SnakeList' })
             }}
           />
         </View>
@@ -128,12 +123,12 @@ const SnakesList = ({ navigation }) => (
   </SafeAreaView>
 )
 
-SnakesList.propTypes = {
+SnakeList.propTypes = {
   navigation: PropTypes.shape({ navigate: PropTypes.func }),
 }
 
-SnakesList.defaultProps = {
+SnakeList.defaultProps = {
   navigation: { navigate: () => null },
 }
 
-export default SnakesList
+export default SnakeList

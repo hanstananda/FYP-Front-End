@@ -23,6 +23,7 @@ const styles = {
   text: {
     fontSize: 28,
     fontWeight: '600',
+    textTransform: 'capitalize',
   },
   leftIconStyle: {
     flex: 0.15,

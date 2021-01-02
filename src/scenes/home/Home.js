@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   flexBox: {
     flexDirection: 'row',
     padding: 5,
-    maxWidth: 300,
   },
   leftIconStyle: {
     flex: 0.15,
@@ -49,19 +48,21 @@ const styles = StyleSheet.create({
   titleCameraButton: {
     fontSize: 20,
     color: colors.white,
-    marginBottom: 5,
+    marginBottom: 2,
+    textTransform: 'uppercase',
   },
   titleInfoButton: {
     fontSize: 20,
     color: colors.darkGreen,
-    marginBottom: 5,
+    marginBottom: 2,
+    textTransform: 'uppercase',
   },
   descCameraButton: {
-    fontSize: 10,
+    fontSize: 13,
     color: colors.white,
   },
   desInfoButton: {
-    fontSize: 10,
+    fontSize: 13,
     color: colors.darkGreen,
   },
   logo: {
@@ -75,6 +76,9 @@ const Home = ({ navigation }) => {
   const btnCameraStyle = [
     buttonStyles.defaultButtonStyle,
     buttonStyles.mainButtonStyle,
+    {
+      height: 80,
+    },
   ]
   const btnInfoStyle = [
     buttonStyles.defaultButtonStyle,
@@ -91,7 +95,15 @@ const Home = ({ navigation }) => {
           navigation.navigate('ImageCapture', { from: 'Home' })
         }}
       >
-        <View style={styles.flexBox}>
+        <View
+          style={[
+            styles.flexBox,
+            {
+              width: 350,
+              height: 80,
+            },
+          ]}
+        >
           <View style={styles.leftIconStyle}>
             <FontAwesomeIcon icon="camera" color={colors.white} size={32} />
           </View>
@@ -115,10 +127,18 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         style={btnInfoStyle}
         onPress={() => {
-          navigation.navigate('SnakesList', { from: 'Home' })
+          navigation.navigate('SnakeList', { from: 'Home' })
         }}
       >
-        <View style={styles.flexBox}>
+        <View
+          style={[
+            styles.flexBox,
+            {
+              width: 300,
+              height: 70,
+            },
+          ]}
+        >
           <View style={styles.leftIconStyle}>
             <FontAwesomeIcon
               icon="info-circle"
@@ -127,7 +147,7 @@ const Home = ({ navigation }) => {
             />
           </View>
           <View style={styles.midText}>
-            <Text style={styles.titleInfoButton}>FIELD GUIDE</Text>
+            <Text style={styles.titleInfoButton}>Snakes Guide</Text>
             <Text style={styles.desInfoButton}>Learn more about snakes</Text>
           </View>
           <View style={styles.rightIconStyle}>

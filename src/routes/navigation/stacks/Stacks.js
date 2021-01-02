@@ -3,8 +3,8 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { colors } from 'theme'
 import Home from 'scenes/home'
 import Profile from 'scenes/profile'
-import Details from 'scenes/details'
-import SnakesList from 'scenes/snakes_guide'
+import Details from 'scenes/snake_detail'
+import SnakeList from 'scenes/snake_list'
 import MapView from 'scenes/map'
 import ImageCapture from 'scenes/image_capture'
 import HeaderLeft from './HeaderLeft'
@@ -44,10 +44,10 @@ export const HomeNavigator = createStackNavigator({
       ...navigationProps,
     }),
   },
-  SnakesList: {
-    screen: SnakesList,
+  SnakeList: {
+    screen: SnakeList,
     navigationOptions: ({ navigation }) => ({
-      titleCameraButton: 'SnakesList',
+      titleCameraButton: 'SnakeList',
       headerLeft: <HeaderLeft navigation={navigation} />,
       headerTitle: <HeaderTitle />,
       ...navigationProps,
