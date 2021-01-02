@@ -6,6 +6,7 @@ import Profile from 'scenes/profile'
 import Details from 'scenes/details'
 import SnakesList from 'scenes/snakes_guide'
 import MapView from 'scenes/map'
+import ImageCapture from 'scenes/image_capture'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
 
@@ -47,6 +48,15 @@ export const HomeNavigator = createStackNavigator({
     screen: SnakesList,
     navigationOptions: ({ navigation }) => ({
       titleCameraButton: 'SnakesList',
+      headerLeft: <HeaderLeft navigation={navigation} />,
+      headerTitle: <HeaderTitle />,
+      ...navigationProps,
+    }),
+  },
+  ImageCapture: {
+    screen: ImageCapture,
+    navigationOptions: ({ navigation }) => ({
+      titleCameraButton: 'ImageCapture',
       headerLeft: <HeaderLeft navigation={navigation} />,
       headerTitle: <HeaderTitle />,
       ...navigationProps,

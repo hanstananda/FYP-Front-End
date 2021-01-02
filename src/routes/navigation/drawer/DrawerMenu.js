@@ -4,7 +4,7 @@ import { View, SafeAreaView, Text } from 'react-native'
 import { DrawerActions } from 'react-navigation-drawer'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
-import MenuOption from '../../../components/MenuOption'
+import MenuOption from 'components/MenuOption'
 
 const styles = {
   root: {
@@ -64,7 +64,7 @@ const DrawerMenu = ({ navigation }) => (
         title="Identify Snakes"
         icon="camera"
         onPress={() => {
-          navigation.navigate('Details', { from: 'Identify Snakes' })
+          navigation.navigate('ImageCapture', { from: 'Identify Snakes' })
         }}
       />
       <MenuOption

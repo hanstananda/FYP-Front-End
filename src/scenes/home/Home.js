@@ -9,9 +9,8 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import Button from 'components/Button'
-import { colors, images } from 'theme'
-import Svg from 'components/Svg'
-import { SvgUri, SvgXml } from 'react-native-svg'
+import { colors, images, buttonStyles } from 'theme'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 const styles = StyleSheet.create({
   root: {
@@ -24,8 +23,7 @@ const styles = StyleSheet.create({
   flexBox: {
     flexDirection: 'row',
     padding: 5,
-    minWidth: 300,
-    height: 70,
+    maxWidth: 300,
   },
   leftIconStyle: {
     flex: 0.15,
@@ -71,28 +69,17 @@ const styles = StyleSheet.create({
     height: 150,
     marginBottom: 50,
   },
-  button: {
-    alignItems: 'center',
-    minWidth: 200,
-    borderRadius: 10,
-    borderWidth: 1,
-    marginBottom: 50,
-  },
-  camera_button: {
-    color: colors.white,
-    backgroundColor: colors.orange,
-    borderColor: colors.orange,
-  },
-  info_button: {
-    color: colors.black,
-    backgroundColor: colors.white,
-    borderColor: colors.darkGreen,
-  },
 })
 
 const Home = ({ navigation }) => {
-  const btnCameraStyle = [styles.button, styles.camera_button]
-  const btnInfoStyle = [styles.button, styles.info_button]
+  const btnCameraStyle = [
+    buttonStyles.defaultButtonStyle,
+    buttonStyles.mainButtonStyle,
+  ]
+  const btnInfoStyle = [
+    buttonStyles.defaultButtonStyle,
+    buttonStyles.altButtonStyle,
+  ]
   return (
     <View style={styles.root}>
       <StatusBar barStyle="light-content" />
@@ -101,12 +88,12 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         style={btnCameraStyle}
         onPress={() => {
-          navigation.navigate('Details', { from: 'Home' })
+          navigation.navigate('ImageCapture', { from: 'Home' })
         }}
       >
         <View style={styles.flexBox}>
           <View style={styles.leftIconStyle}>
-            <Image style={styles.iconStyle} source={images.camera} />
+            <FontAwesomeIcon icon="camera" color={colors.white} size={32} />
           </View>
           <View style={styles.midText}>
             <Text style={styles.titleCameraButton}>IDENTIFY SNAKES</Text>
@@ -116,7 +103,11 @@ const Home = ({ navigation }) => {
             </Text>
           </View>
           <View style={styles.rightIconStyle}>
-            <Image style={styles.iconStyle} source={images.right_arrow} />
+            <FontAwesomeIcon
+              icon="chevron-right"
+              color={colors.white}
+              size={32}
+            />
           </View>
         </View>
       </TouchableOpacity>
@@ -124,19 +115,27 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         style={btnInfoStyle}
         onPress={() => {
-          navigation.navigate('Details', { from: 'Home' })
+          navigation.navigate('SnakesList', { from: 'Home' })
         }}
       >
         <View style={styles.flexBox}>
           <View style={styles.leftIconStyle}>
-            <Image style={styles.iconStyle} source={images.info} />
+            <FontAwesomeIcon
+              icon="info-circle"
+              color={colors.darkGreen}
+              size={32}
+            />
           </View>
           <View style={styles.midText}>
             <Text style={styles.titleInfoButton}>FIELD GUIDE</Text>
             <Text style={styles.desInfoButton}>Learn more about snakes</Text>
           </View>
           <View style={styles.rightIconStyle}>
-            <Image style={styles.iconStyle} source={images.right_arrow} />
+            <FontAwesomeIcon
+              icon="chevron-right"
+              color={colors.darkGreen}
+              size={32}
+            />
           </View>
         </View>
       </TouchableOpacity>
