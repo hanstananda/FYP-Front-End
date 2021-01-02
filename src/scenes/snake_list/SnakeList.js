@@ -11,6 +11,8 @@ import {
 } from 'react-native'
 import { colors } from 'theme'
 import SnakeItem from 'components/SnakeItemList'
+import { connect } from 'react-redux'
+import snakesInfoReducer from 'modules/SnakesInfo.module'
 
 const styles = StyleSheet.create({
   root: {
@@ -113,7 +115,7 @@ const SnakeList = ({ navigation }) => (
             subtitle={item.latin_name}
             image={item.image}
             onPress={() => {
-              navigation.navigate('Details', { from: 'SnakeList' })
+              navigation.navigate('Details', { snakeInfo: item })
             }}
           />
         </View>
@@ -131,4 +133,4 @@ SnakeList.defaultProps = {
   navigation: { navigate: () => null },
 }
 
-export default SnakeList
+export default connect(null, { SnakeList })(SnakeList)

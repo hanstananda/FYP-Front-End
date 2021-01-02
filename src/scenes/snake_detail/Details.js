@@ -49,23 +49,18 @@ const styles = StyleSheet.create({
 
 const Details = ({ navigation }) => {
   const { from } = navigation.state.params
+  const { snakeInfo } = navigation.state.params
   return (
     <SafeAreaView style={styles.root}>
       <ScrollView>
         <StatusBar barStyle="light-content" />
         <View style={styles.centeredContent}>
-          <Image style={styles.logo} source={images.sample_snake} />
-          <Text style={styles.titleDetails}>Eastern racer</Text>
-          <Text style={styles.subtitleDetails}>(Coluber constrictor)</Text>
+          <Image style={styles.logo} source={images[snakeInfo.image]} />
+          <Text style={styles.titleDetails}>{snakeInfo.name}</Text>
+          <Text style={styles.subtitleDetails}>({snakeInfo.latin_name})</Text>
         </View>
-        <Text style={styles.descDetails}>
-          The eastern racer is a species of nonvenomous snake in the family
-          Colubridae. The species is endemic to North America and Central
-          America. Eleven subspecies, including the nominotypical subspecies,
-          are recognized, which as a group are commonly referred to as the
-          eastern racers
-        </Text>
-        <Text style={styles.title}>{`Details (from ${from})`}</Text>
+        <Text style={styles.descDetails}>{snakeInfo.description}</Text>
+        {/* <Text style={styles.title}>{`Details (from ${from})`}</Text> */}
         {/* <Button */}
         {/*  title="Go Back" */}
         {/*  color="white" */}
@@ -84,6 +79,13 @@ Details.propTypes = {
     state: PropTypes.shape({
       params: PropTypes.shape({
         from: PropTypes.string,
+        snakeInfo: PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string,
+          latin_name: PropTypes.string,
+          description: PropTypes.string,
+          image: PropTypes.string,
+        }),
       }),
     }),
     goBack: PropTypes.func,
@@ -95,6 +97,13 @@ Details.defaultProps = {
     state: {
       params: {
         from: '',
+        snakeInfo: {
+          id: 0,
+          name: 'Asian vine snake',
+          latin_name: 'Ahaetulla prasine',
+          description: 'mildly venomous, non harmful to humans',
+          image: 'sample_snake',
+        },
       },
     },
     goBack: () => null,
