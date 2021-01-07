@@ -12,6 +12,7 @@ import * as ImagePicker from 'expo-image-picker'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { buttonStyles, colors } from '../../theme'
+import postSnakeImage from '../../services/SnakeImage/postSnakeImage'
 
 const styles = StyleSheet.create({
   root: {
@@ -83,14 +84,31 @@ const ImageCapture: React.FC = ({ navigation }) => {
       quality: 1,
     })
 
-    console.log(result)
+    // console.log(result)
 
     if (!result.cancelled) {
       setImage(result.uri)
     }
   }
 
-  const sendImage = async () => {}
+  const sendImage = () => {
+    const formData = new FormData()
+
+    // ImagePicker saves the taken photo to disk and returns a local URI to it
+    const localUri = image
+    const filename = localUri.split('/').pop()
+
+    // Infer the type of the image
+    const match = /\.(\w+)$/.exec(filename)
+    const type = match ? `image/${match[1]}` : 'image'
+
+    formData.append('image', { uri: localUri, name: filename, type })
+
+    // console.log(formData)
+    postSnakeImage(formData).then((resp) => {
+      console.log(resp)
+    })
+  }
 
   return (
     <View style={styles.root}>
