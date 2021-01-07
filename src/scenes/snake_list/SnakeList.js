@@ -13,7 +13,7 @@ import { colors } from 'theme'
 import SnakeItem from 'components/SnakeItemList'
 import { connect } from 'react-redux'
 import snakesInfoReducer from 'modules/SnakesInfo.module'
-import getSnakeInfoList from '../../services/SnakeInfo/getSnakeInfoList'
+import getSnakeInfoList from 'services/SnakeInfo/getSnakeInfoList'
 // import SnakeInfo from 'services/SnakeInfo'
 
 const styles = StyleSheet.create({

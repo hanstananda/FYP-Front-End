@@ -11,8 +11,8 @@ import {
 import * as ImagePicker from 'expo-image-picker'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import postSnakeImage from 'services/SnakeImage/postSnakeImage'
 import { buttonStyles, colors } from '../../theme'
-import postSnakeImage from '../../services/SnakeImage/postSnakeImage'
 
 const styles = StyleSheet.create({
   root: {
