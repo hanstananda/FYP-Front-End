@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   TouchableOpacity, Text, View, Image,
@@ -47,13 +47,24 @@ const SnakeItem = ({
   textStyle,
   style,
 }) => {
+  const [valid, setValid] = useState(true)
   const btnStyle = [styles.flexBox, { backgroundColor }, style]
   const txtStyle = [styles.text, { color }, textStyle]
   return (
     <TouchableOpacity onPress={onPress} style={btnStyle}>
       <View style={styles.flexBox}>
         <View style={styles.leftIconStyle}>
-          <Image style={styles.image} source={images.sample_snake} />
+          <Image
+            onError={() => setValid(false)}
+            style={styles.image}
+            source={
+              valid
+                ? {
+                  uri: image.image,
+                }
+                : images.logo_lg
+            }
+          />
         </View>
 
         <View style={styles.midText}>
@@ -66,7 +77,9 @@ const SnakeItem = ({
 
 SnakeItem.propTypes = {
   title: PropTypes.string,
-  image: PropTypes.string,
+  image: PropTypes.shape({
+    image: PropTypes.string,
+  }),
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
   onPress: PropTypes.func,
@@ -76,7 +89,9 @@ SnakeItem.propTypes = {
 
 SnakeItem.defaultProps = {
   title: 'test',
-  image: 'sample_snake',
+  image: {
+    image: 'sample_snake',
+  },
   color: colors.blue,
   backgroundColor: 'auto',
   onPress: () => {},

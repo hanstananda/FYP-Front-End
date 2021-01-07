@@ -90,6 +90,8 @@ const ImageCapture: React.FC = ({ navigation }) => {
     }
   }
 
+  const sendImage = async () => {}
+
   return (
     <View style={styles.root}>
       <TouchableOpacity style={btnImageFromFileStyle} onPress={pickImage}>
@@ -105,7 +107,7 @@ const ImageCapture: React.FC = ({ navigation }) => {
       </TouchableOpacity>
       <Image source={{ uri: image }} style={{ width: 299, height: 299 }} />
       {image && (
-        <TouchableOpacity style={btnImageCaptureStyle}>
+        <TouchableOpacity style={btnImageCaptureStyle} onPress={sendImage}>
           <View style={styles.flexBox}>
             <View style={styles.leftIconStyle}>
               <FontAwesomeIcon icon="camera" color={colors.white} size={32} />

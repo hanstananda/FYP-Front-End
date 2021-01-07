@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   StyleSheet,
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
 })
 
 const Details = ({ navigation }) => {
+  const [valid, setValid] = useState(true)
   const { from } = navigation.state.params
   const { snakeInfo } = navigation.state.params
   return (
@@ -55,7 +56,11 @@ const Details = ({ navigation }) => {
       <ScrollView>
         <StatusBar barStyle="light-content" />
         <View style={styles.centeredContent}>
-          <Image style={styles.logo} source={images[snakeInfo.image]} />
+          <Image
+            onError={() => setValid(false)}
+            style={styles.logo}
+            source={valid ? { uri: snakeInfo.image.image } : images.logo_lg}
+          />
           <Text style={styles.titleDetails}>{snakeInfo.name}</Text>
           <Text style={styles.subtitleDetails}>({snakeInfo.latin_name})</Text>
         </View>
@@ -84,7 +89,9 @@ Details.propTypes = {
           name: PropTypes.string,
           latin_name: PropTypes.string,
           description: PropTypes.string,
-          image: PropTypes.string,
+          image: PropTypes.shape({
+            image: PropTypes.string,
+          }),
         }),
       }),
     }),
@@ -102,7 +109,9 @@ Details.defaultProps = {
           name: 'Asian vine snake',
           latin_name: 'Ahaetulla prasine',
           description: 'mildly venomous, non harmful to humans',
-          image: 'sample_snake',
+          image: {
+            image: 'sample_snake',
+          },
         },
       },
     },

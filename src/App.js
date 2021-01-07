@@ -13,9 +13,24 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 // assets
 import { imageAssets } from 'theme/images'
 import { fontAssets } from 'theme/fonts'
+import Constants from 'expo-constants'
 import Router from './routes'
 
 library.add(fas)
+
+// axios
+
+const axios = require('axios').default
+/*
+https://docs.expo.io/guides/environment-variables/
+For security reasons, only the variables that starts with REACT_NATIVE_ or EXPO_ are available.
+*/
+// console.log(process.env.EXPO_BACKEND_URL)
+
+// axios.defaults.baseURL = process.env.EXPO_BACKEND_URL;
+axios.defaults.baseURL = 'http://192.168.0.100:8000'
+
+console.log('Default base url is ', axios.defaults.baseURL)
 
 const App = () => {
   // state
