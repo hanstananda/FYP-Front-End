@@ -57,13 +57,7 @@ const SnakeItem = ({
           <Image
             onError={() => setValid(false)}
             style={styles.image}
-            source={
-              valid
-                ? {
-                  uri: image.image,
-                }
-                : images.logo_lg
-            }
+            source={{ uri: image.image }}
           />
         </View>
 
