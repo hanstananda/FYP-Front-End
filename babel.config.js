@@ -13,6 +13,7 @@ module.exports = function (api) {
         {
           alias: {
             components: './src/components',
+            services: './src/services',
             scenes: './src/scenes',
             theme: './src/theme',
             utils: './src/utils',
