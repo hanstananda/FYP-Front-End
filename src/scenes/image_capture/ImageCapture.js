@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import postSnakeImage from 'services/SnakeImage/postSnakeImage'
 import { buttonStyles, colors } from '../../theme'
 import postSnakeClassify from '../../services/SnakeClassify/postSnakeClassify'
+import getSnakeInfo from '../../services/SnakeInfo/getSnakeInfo'
 
 const styles = StyleSheet.create({
   root: {
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
 
 const ImageCapture: React.FC = ({ navigation }) => {
   const [image, setImage] = useState(null)
-  const [snakeClass, setSnakeClass] = useState(0)
   const btnImageFromFileStyle = [
     buttonStyles.defaultButtonStyle,
     buttonStyles.altButtonStyle,
@@ -118,17 +118,24 @@ const ImageCapture: React.FC = ({ navigation }) => {
         console.log(error.response.data.error)
       })
 
+    let snakeClass = 0
+
     await postSnakeClassify({
       snake_image: id,
     })
       .then((resp) => {
         console.log('Classification successful!')
         console.log(resp.data)
-        setSnakeClass(resp.data.classification)
+        snakeClass = resp.data.classification
       })
       .catch((error) => {
         console.log(error.response.data.error)
       })
+
+    await getSnakeInfo(snakeClass).then((resp) => {
+      console.log(resp)
+      navigation.navigate('Details', { snakeInfo: resp })
+    })
   }
 
   return (
