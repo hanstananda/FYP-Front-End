@@ -13,6 +13,7 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import postSnakeImage from 'services/SnakeImage/postSnakeImage'
 import { buttonStyles, colors } from '../../theme'
+import postSnakeClassify from '../../services/SnakeClassify/postSnakeClassify'
 
 const styles = StyleSheet.create({
   root: {
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
 
 const ImageCapture: React.FC = ({ navigation }) => {
   const [image, setImage] = useState(null)
+  const [snakeClass, setSnakeClass] = useState(0)
   const btnImageFromFileStyle = [
     buttonStyles.defaultButtonStyle,
     buttonStyles.altButtonStyle,
@@ -91,7 +93,7 @@ const ImageCapture: React.FC = ({ navigation }) => {
     }
   }
 
-  const sendImage = () => {
+  const sendImage = async () => {
     const formData = new FormData()
 
     // ImagePicker saves the taken photo to disk and returns a local URI to it
@@ -104,10 +106,29 @@ const ImageCapture: React.FC = ({ navigation }) => {
 
     formData.append('image', { uri: localUri, name: filename, type })
 
+    let id = 0
+
     // console.log(formData)
-    postSnakeImage(formData).then((resp) => {
-      console.log(resp)
+    await postSnakeImage(formData)
+      .then((resp) => {
+        console.log('Image upload successful!')
+        id = resp.data.id
+      })
+      .catch((error) => {
+        console.log(error.response.data.error)
+      })
+
+    await postSnakeClassify({
+      snake_image: id,
     })
+      .then((resp) => {
+        console.log('Classification successful!')
+        console.log(resp.data)
+        setSnakeClass(resp.data.classification)
+      })
+      .catch((error) => {
+        console.log(error.response.data.error)
+      })
   }
 
   return (
