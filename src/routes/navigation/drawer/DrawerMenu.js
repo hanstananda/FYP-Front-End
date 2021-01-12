@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View, SafeAreaView, Text } from 'react-native'
-import { DrawerActions } from 'react-navigation-drawer'
+
+import { DrawerActions } from '@react-navigation/native'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
 import MenuOption from 'components/MenuOption'
+import { NavigationActions as navigation } from 'react-navigation'
 
 const styles = {
   root: {
@@ -18,12 +20,14 @@ const styles = {
     justifyContent: 'center',
   },
   main: {
+    // flex: 1,
     // flexDirection: 'column',
     // justifyContent: 'center',
+    // alignItems: 'center',
   },
 }
 
-const DrawerMenu = ({ navigation }) => (
+const DrawerMenu = (props) => (
   <SafeAreaView style={styles.root}>
     <View style={styles.head}>
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>By Hans Tananda</Text>
@@ -37,7 +41,6 @@ const DrawerMenu = ({ navigation }) => (
       {/*  }} */}
       {/* /> */}
     </View>
-    {/* <Text>Drawer Menu</Text> */}
     <View style={styles.main}>
       <MenuOption
         title="Home"
