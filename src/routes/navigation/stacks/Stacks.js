@@ -80,54 +80,6 @@ export const HomeNavigator = () => (
   </Stack.Navigator>
 )
 
-// export const HomeNavigator = createStackNavigator({
-//   Home: {
-//     screen: Home,
-//     navigationOptions: ({ navigation }) => ({
-//       titleCameraButton: 'Home',
-//       headerLeft: <HeaderLeft navigation={navigation} />,
-//       headerTitle: <HeaderTitle />,
-//       ...navigationProps,
-//     }),
-//   },
-//   Details: {
-//     screen: Details,
-//     navigationOptions: ({ navigation }) => ({
-//       titleCameraButton: 'Details',
-//       headerLeft: <HeaderLeft navigation={navigation} />,
-//       headerTitle: <HeaderTitle />,
-//       ...navigationProps,
-//     }),
-//   },
-//   MapView: {
-//     screen: MapView,
-//     navigationOptions: ({ navigation }) => ({
-//       titleCameraButton: 'MapView',
-//       headerLeft: <HeaderLeft navigation={navigation} />,
-//       headerTitle: <HeaderTitle />,
-//       ...navigationProps,
-//     }),
-//   },
-//   SnakeList: {
-//     screen: SnakeList,
-//     navigationOptions: ({ navigation }) => ({
-//       titleCameraButton: 'SnakeList',
-//       headerLeft: <HeaderLeft navigation={navigation} />,
-//       headerTitle: <HeaderTitle />,
-//       ...navigationProps,
-//     }),
-//   },
-//   ImageCapture: {
-//     screen: ImageCapture,
-//     navigationOptions: ({ navigation }) => ({
-//       titleCameraButton: 'ImageCapture',
-//       headerLeft: <HeaderLeft navigation={navigation} />,
-//       headerTitle: <HeaderTitle />,
-//       ...navigationProps,
-//     }),
-//   },
-// })
-
 export const ProfileNavigator = () => (
   <Stack.Navigator
     initialRouteName="Profile"
@@ -139,6 +91,81 @@ export const ProfileNavigator = () => (
       component={Profile}
       options={({ navigation }) => ({
         title: 'Profile',
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerTitle: () => <HeaderTitle />,
+      })}
+    />
+    <Stack.Screen
+      name="Details"
+      component={Details}
+      options={{
+        title: 'Details',
+      }}
+    />
+  </Stack.Navigator>
+)
+
+export const SnakeListNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="SnakeList"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="SnakeList"
+      component={SnakeList}
+      options={({ navigation }) => ({
+        title: 'Snake List',
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerTitle: () => <HeaderTitle />,
+      })}
+    />
+    <Stack.Screen
+      name="Details"
+      component={Details}
+      options={{
+        title: 'Details',
+      }}
+    />
+  </Stack.Navigator>
+)
+
+export const MapViewNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="MapView"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="MapView"
+      component={MapView}
+      options={({ navigation }) => ({
+        title: 'Map View',
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerTitle: () => <HeaderTitle />,
+      })}
+    />
+    <Stack.Screen
+      name="Details"
+      component={Details}
+      options={{
+        title: 'Details',
+      }}
+    />
+  </Stack.Navigator>
+)
+
+export const ImageCaptureNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="ImageCapture"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="ImageCapture"
+      component={ImageCapture}
+      options={({ navigation }) => ({
+        title: 'Image Capture',
         headerLeft: () => <HeaderLeft navigation={navigation} />,
         headerTitle: () => <HeaderTitle />,
       })}
