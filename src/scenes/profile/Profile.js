@@ -59,6 +59,10 @@ const Profile = ({ navigation }) => {
   const [username, onChangeUsername] = React.useState('Username')
   const [password, onChangePassword] = React.useState('Password')
 
+  const login = async () => {
+    console.log('Login pressed!')
+  }
+
   return (
     <View style={styles.root}>
       <StatusBar barStyle="light-content" />
@@ -66,21 +70,18 @@ const Profile = ({ navigation }) => {
       {/* <Text style={styles.title}>Profile</Text> */}
       <TextInput
         style={styles.formInput}
+        placeholder="Username"
         onChangeText={(text) => onChangeUsername(text)}
-        value={username}
+        // value={username}
       />
       <TextInput
         style={styles.formInput}
+        placeholder="Password"
         secureTextEntry
         onChangeText={(text) => onChangePassword(text)}
-        value={password}
+        // value={password}
       />
-      <TouchableOpacity
-        style={styles.loginButton}
-        onPress={() => {
-          navigation.navigate('ImageCapture', { from: 'Home' })
-        }}
-      >
+      <TouchableOpacity style={styles.loginButton} onPress={login}>
         {/* <View  style={styles.loginButton}> */}
         <Text style={styles.loginText}>Login</Text>
         {/* </View> */}
