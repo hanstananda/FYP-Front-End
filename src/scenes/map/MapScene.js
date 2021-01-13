@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 const MapScene = ({ navigation }) => (
   <View style={styles.root}>
     <StatusBar barStyle="light-content" />
-    <Text style={styles.title}>MapView</Text>
+    <Text style={styles.title}>MapView - Pending Request Approval</Text>
   </View>
 )
 

@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
+    // justifyContent: 'center',
+    backgroundColor: colors.white,
   },
   flexBox: {
     flexDirection: 'row',
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     color: colors.darkGreen,
   },
   logo: {
+    marginTop: 50,
     width: 150,
     height: 150,
     marginBottom: 50,

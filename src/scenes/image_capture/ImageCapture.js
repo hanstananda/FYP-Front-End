@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: colors.lightGrayPurple,
+    backgroundColor: colors.white,
   },
   topButton: {
     marginTop: 30,

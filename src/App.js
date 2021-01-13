@@ -9,6 +9,7 @@ import 'utils/ignore'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
 
 // assets
 import { imageAssets } from 'theme/images'
@@ -16,7 +17,7 @@ import { fontAssets } from 'theme/fonts'
 import Constants from 'expo-constants'
 import Router from './routes'
 
-library.add(fas)
+library.add(far, fas)
 
 // axios
 

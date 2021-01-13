@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.lightGrayPurple,
+    backgroundColor: colors.white,
   },
   centeredContent: {
     alignItems: 'center',
@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const Details = ({ navigation }) => {
+const Details = ({ route, navigation }) => {
   const [valid, setValid] = useState(true)
-  const { from } = navigation.state.params
-  const { snakeInfo } = navigation.state.params
+  const { from } = route.params
+  const { snakeInfo } = route.params
   return (
     <SafeAreaView style={styles.root}>
       <ScrollView>
@@ -80,40 +80,43 @@ const Details = ({ navigation }) => {
 }
 
 Details.propTypes = {
-  navigation: PropTypes.shape({
-    state: PropTypes.shape({
-      params: PropTypes.shape({
-        from: PropTypes.string,
-        snakeInfo: PropTypes.shape({
-          id: PropTypes.number,
-          name: PropTypes.string,
-          latin_name: PropTypes.string,
-          description: PropTypes.string,
-          image: PropTypes.shape({
-            image: PropTypes.string,
-          }),
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      from: PropTypes.string,
+      snakeInfo: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        latin_name: PropTypes.string,
+        description: PropTypes.string,
+        image: PropTypes.shape({
+          image: PropTypes.string,
         }),
       }),
     }),
+
     goBack: PropTypes.func,
   }),
+  navigation: PropTypes.shape({}),
 }
 
 Details.defaultProps = {
-  navigation: {
-    state: {
-      params: {
-        from: '',
-        snakeInfo: {
-          id: 0,
-          name: 'Asian vine snake',
-          latin_name: 'Ahaetulla prasine',
-          description: 'mildly venomous, non harmful to humans',
-          image: {
-            image: 'sample_snake',
-          },
+  route: {
+    params: {
+      from: '',
+      snakeInfo: {
+        id: 0,
+        name: 'Asian vine snake',
+        latin_name: 'Ahaetulla prasine',
+        description: 'mildly venomous, non harmful to humans',
+        image: {
+          image: 'sample_snake',
         },
       },
+    },
+  },
+  navigation: {
+    state: {
+      params: {},
     },
     goBack: () => null,
   },

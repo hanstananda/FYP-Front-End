@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View, SafeAreaView, Text } from 'react-native'
-import { DrawerActions } from 'react-navigation-drawer'
-import FontIcon from 'react-native-vector-icons/FontAwesome5'
-import { colors } from 'theme'
+
 import MenuOption from 'components/MenuOption'
+import { NavigationActions as navigation } from 'react-navigation'
 
 const styles = {
   root: {
@@ -18,12 +17,14 @@ const styles = {
     justifyContent: 'center',
   },
   main: {
+    // flex: 1,
     // flexDirection: 'column',
     // justifyContent: 'center',
+    // alignItems: 'center',
   },
 }
 
-const DrawerMenu = ({ navigation }) => (
+const DrawerMenu = (props) => (
   <SafeAreaView style={styles.root}>
     <View style={styles.head}>
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>By Hans Tananda</Text>
@@ -37,44 +38,43 @@ const DrawerMenu = ({ navigation }) => (
       {/*  }} */}
       {/* /> */}
     </View>
-    {/* <Text>Drawer Menu</Text> */}
-    <View style={styles.main}>
-      <MenuOption
-        title="Home"
-        icon="home"
-        onPress={() => {
-          navigation.navigate('Home')
-        }}
-      />
-      <MenuOption
-        title="Map View"
-        icon="map"
-        onPress={() => {
-          navigation.navigate('MapView', { from: 'Map View' })
-        }}
-      />
-      <MenuOption
-        title="Snakes Guide"
-        icon="info-circle"
-        onPress={() => {
-          navigation.navigate('SnakeList', { from: 'Snakes Guide' })
-        }}
-      />
-      <MenuOption
-        title="Identify Snakes"
-        icon="camera"
-        onPress={() => {
-          navigation.navigate('ImageCapture', { from: 'Identify Snakes' })
-        }}
-      />
-      <MenuOption
-        title="Sign In"
-        icon="sign-in-alt"
-        onPress={() => {
-          navigation.navigate('Details', { from: 'Sign In' })
-        }}
-      />
-    </View>
+    {/* <View style={styles.main}> */}
+    {/*  <MenuOption */}
+    {/*    title="Home" */}
+    {/*    icon="home" */}
+    {/*    onPress={() => { */}
+    {/*      navigation.navigate('Home') */}
+    {/*    }} */}
+    {/*  /> */}
+    {/*  <MenuOption */}
+    {/*    title="Map View" */}
+    {/*    icon="map" */}
+    {/*    onPress={() => { */}
+    {/*      navigation.navigate('MapView', { from: 'Map View' }) */}
+    {/*    }} */}
+    {/*  /> */}
+    {/*  <MenuOption */}
+    {/*    title="Snakes Guide" */}
+    {/*    icon="info-circle" */}
+    {/*    onPress={() => { */}
+    {/*      navigation.navigate('SnakeList', { from: 'Snakes Guide' }) */}
+    {/*    }} */}
+    {/*  /> */}
+    {/*  <MenuOption */}
+    {/*    title="Identify Snakes" */}
+    {/*    icon="camera" */}
+    {/*    onPress={() => { */}
+    {/*      navigation.navigate('ImageCapture', { from: 'Identify Snakes' }) */}
+    {/*    }} */}
+    {/*  /> */}
+    {/*  <MenuOption */}
+    {/*    title="Sign In" */}
+    {/*    icon="sign-in-alt" */}
+    {/*    onPress={() => { */}
+    {/*      navigation.navigate('Details', { from: 'Sign In' }) */}
+    {/*    }} */}
+    {/*  /> */}
+    {/* </View> */}
   </SafeAreaView>
 )
 
