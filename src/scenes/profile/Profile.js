@@ -1,10 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {
-  StyleSheet, Text, View, StatusBar, TextInput,
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  TextInput,
+  TouchableOpacity,
+  Image,
 } from 'react-native'
 import Button from 'components/Button'
-import { colors } from 'theme'
+import { colors, images } from 'theme'
 
 const styles = StyleSheet.create({
   root: {
@@ -12,33 +18,73 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     // justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
+    backgroundColor: colors.white,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
   },
   formInput: {
-    height: 40,
+    height: 50,
     minWidth: 250,
-    borderColor: 'gray',
+    borderColor: colors.blue,
     borderWidth: 1,
     borderRadius: 25,
+    paddingLeft: 20,
+    marginBottom: 20,
+  },
+  loginButton: {
+    height: 50,
+    minWidth: 250,
+    backgroundColor: colors.blue,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loginText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.white,
+    textTransform: 'uppercase',
+  },
+  logo: {
+    marginTop: 50,
+    width: 150,
+    height: 150,
+    marginBottom: 50,
   },
 })
 
 const Profile = ({ navigation }) => {
-  const [value, onChangeText] = React.useState('Useless Placeholder')
+  const [username, onChangeUsername] = React.useState('Username')
+  const [password, onChangePassword] = React.useState('Password')
 
   return (
     <View style={styles.root}>
       <StatusBar barStyle="light-content" />
-      <Text style={styles.title}>Profile</Text>
+      <Image style={styles.logo} source={images.logo_sm} />
+      {/* <Text style={styles.title}>Profile</Text> */}
       <TextInput
         style={styles.formInput}
-        onChangeText={(text) => onChangeText(text)}
-        value={value}
+        onChangeText={(text) => onChangeUsername(text)}
+        value={username}
       />
+      <TextInput
+        style={styles.formInput}
+        secureTextEntry
+        onChangeText={(text) => onChangePassword(text)}
+        value={password}
+      />
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => {
+          navigation.navigate('ImageCapture', { from: 'Home' })
+        }}
+      >
+        {/* <View  style={styles.loginButton}> */}
+        <Text style={styles.loginText}>Login</Text>
+        {/* </View> */}
+      </TouchableOpacity>
       {/* <Button */}
       {/*  title="Go to Details" */}
       {/*  color="white" */}

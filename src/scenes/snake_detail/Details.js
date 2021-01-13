@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.lightGrayPurple,
+    backgroundColor: colors.white,
   },
   centeredContent: {
     alignItems: 'center',

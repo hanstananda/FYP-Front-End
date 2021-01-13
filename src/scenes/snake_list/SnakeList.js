@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     // alignItems: 'center',
     // justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
+    backgroundColor: colors.white,
   },
   scrollView: {
     marginHorizontal: 20,
