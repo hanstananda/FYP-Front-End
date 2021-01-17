@@ -3,17 +3,21 @@ import PropTypes from 'prop-types'
 import { Text } from 'react-native'
 import Connector from 'utils/connector'
 import Main from './navigation'
+import MainAuth from './navigationAuth'
 
 const Routes = ({ actions, checked, loggedIn }) => {
   useEffect(() => {
-    actions.authenticate()
+    // actions.authenticate()
   }, [])
 
   // TODO: switch router by loggedIn state
   console.log('[##] loggedIn', loggedIn)
 
   // rendering
-  if (!checked) return <Text>Loading...</Text>
+  // if (!checked) return <Text>Loading...</Text>
+  if (loggedIn) {
+    return <MainAuth />
+  }
   return <Main />
 }
 

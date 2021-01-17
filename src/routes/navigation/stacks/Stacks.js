@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { colors } from 'theme'
 import Home from 'scenes/home'
-import Profile from 'scenes/profile'
+import LoginProfile from 'scenes/profile'
 import Details from 'scenes/snake_detail'
 import SnakeList from 'scenes/snake_list'
 import MapView from 'scenes/map'
@@ -88,7 +88,7 @@ export const ProfileNavigator = () => (
   >
     <Stack.Screen
       name="Profile"
-      component={Profile}
+      component={LoginProfile}
       options={({ navigation }) => ({
         title: 'Profile',
         headerLeft: () => <HeaderLeft navigation={navigation} />,

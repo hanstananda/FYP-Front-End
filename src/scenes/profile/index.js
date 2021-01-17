@@ -1,3 +1,3 @@
-import Profile from './Profile'
+import LoginProfile from './LoginProfile'
 
-export default Profile
+export default LoginProfile

@@ -11,6 +11,9 @@ import {
 } from 'react-native'
 import Button from 'components/Button'
 import { colors, images } from 'theme'
+import postLogin from '../../services/Auth'
+import { actions, authenticate } from '../../modules/app.module'
+import Connector from '../../utils/connector'
 
 const styles = StyleSheet.create({
   root: {
@@ -55,12 +58,26 @@ const styles = StyleSheet.create({
   },
 })
 
-const Profile = ({ navigation }) => {
+const LoginProfile = ({ navigation }) => {
   const [username, onChangeUsername] = React.useState('Username')
   const [password, onChangePassword] = React.useState('Password')
+  const [token, setToken] = React.useState('')
 
   const login = async () => {
     console.log('Login pressed!')
+    await postLogin({
+      username,
+      password,
+    })
+      .then((resp) => {
+        console.log('Login successful!')
+        console.log(resp.data)
+        authenticate(resp.data.token)
+        setToken(resp.data.token)
+      })
+      .catch((error) => {
+        console.log(error.response.data.error)
+      })
   }
 
   return (
@@ -98,12 +115,12 @@ const Profile = ({ navigation }) => {
   )
 }
 
-Profile.propTypes = {
+LoginProfile.propTypes = {
   navigation: PropTypes.shape({ navigate: PropTypes.func }),
 }
 
-Profile.defaultProps = {
+LoginProfile.defaultProps = {
   navigation: { navigate: () => null },
 }
 
-export default Profile
+export default LoginProfile

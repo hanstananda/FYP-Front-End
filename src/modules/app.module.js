@@ -4,10 +4,12 @@
 
 const SAVE_ME = 'SAVE_ME'
 const LOGGED_IN = 'LOGGED_IN'
+const TOKEN = 'TOKEN'
 
 const initialState = {
   checked: false,
   loggedIn: false,
+  token: '',
   me: {},
 }
 
@@ -16,10 +18,18 @@ const initialState = {
 // ------------------------------------
 
 // TODO: check the user's login state
-export const authenticate = () => (dispatch) => dispatch({
+export const authenticate = (token) => (dispatch) => dispatch({
   type: LOGGED_IN,
   loggedIn: true,
+  token,
   checked: true,
+})
+
+export const logout = () => (dispatch) => dispatch({
+  type: LOGGED_IN,
+  loggedIn: false,
+  token: '',
+  checked: false,
 })
 
 export const saveMe = (me) => (dispatch) => dispatch({
@@ -29,6 +39,7 @@ export const saveMe = (me) => (dispatch) => dispatch({
 
 export const actions = {
   authenticate,
+  logout,
   saveMe,
 }
 
@@ -45,6 +56,10 @@ const ACTION_HANDLERS = {
   [SAVE_ME]: (state, { me }) => ({
     ...state,
     me,
+  }),
+  [TOKEN]: (state, { token }) => ({
+    ...state,
+    token,
   }),
 }
 
