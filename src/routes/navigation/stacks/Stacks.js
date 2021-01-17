@@ -17,7 +17,7 @@ import HeaderTitle from './HeaderTitle'
 const Stack = createStackNavigator()
 
 const navigationProps = {
-  headerTintColor: 'white',
+  headerTintColor: colors.black,
   headerStyle: { backgroundColor: colors.white },
   headerTitleStyle: { fontSize: 18 },
 }

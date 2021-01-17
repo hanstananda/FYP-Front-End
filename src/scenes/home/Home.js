@@ -93,7 +93,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         style={btnCameraStyle}
         onPress={() => {
-          navigation.navigate('ImageCapture', { from: 'Home' })
+          navigation.navigate('Identify Snakes', { from: 'Home' })
         }}
       >
         <View
@@ -128,7 +128,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         style={btnInfoStyle}
         onPress={() => {
-          navigation.navigate('SnakeList', { from: 'Home' })
+          navigation.navigate('Snake List', { from: 'Home' })
         }}
       >
         <View
