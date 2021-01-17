@@ -19,6 +19,11 @@ const buttonStyles = {
     backgroundColor: colors.white,
     borderColor: colors.darkGreen,
   },
+  altButtonStyle2: {
+    color: colors.black,
+    backgroundColor: colors.white,
+    borderColor: colors.orange,
+  },
 }
 
 export default buttonStyles

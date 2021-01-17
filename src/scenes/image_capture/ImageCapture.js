@@ -23,9 +23,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
   },
-  topButton: {
-    marginTop: 30,
-    marginBottom: 20,
+  topFileButton: {
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  topCameraButton: {
+    // marginTop: 15,
+    marginBottom: 15,
+  },
+  classifyButton: {
+    marginTop: 25,
   },
   flexBox: {
     flex: 1,
@@ -55,24 +62,37 @@ const ImageCapture: React.FC = ({ navigation }) => {
   const btnImageFromFileStyle = [
     buttonStyles.defaultButtonStyle,
     buttonStyles.altButtonStyle,
-    styles.topButton,
+    styles.topFileButton,
   ]
   const btnImageCaptureStyle = [
     buttonStyles.defaultButtonStyle,
+    buttonStyles.altButtonStyle2,
+    styles.topCameraButton,
+  ]
+  const btnImageClassifyStyle = [
+    buttonStyles.defaultButtonStyle,
     buttonStyles.mainButtonStyle,
-    styles.topButton,
+    styles.classifyButton,
   ]
   const folderTextStyle = [styles.text, { color: colors.darkGreen }]
-  const cameraTextSTyle = [styles.text, { color: colors.white }]
+  const cameraTextStyle = [styles.text, { color: colors.orange }]
+  const classifyTextStyle = [styles.text, { color: colors.white }]
 
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
         const {
+          statusCamera,
+        } = await ImagePicker.requestCameraPermissionsAsync()
+        if (statusCamera !== 'granted') {
+          alert('We need camera permissions to make this work!')
+        }
+
+        const {
           status,
         } = await ImagePicker.requestMediaLibraryPermissionsAsync()
         if (status !== 'granted') {
-          alert('Sorry, we need camera roll permissions to make this work!')
+          alert('We need media library roll permissions to make this work!')
         }
       }
     })()
@@ -80,6 +100,21 @@ const ImageCapture: React.FC = ({ navigation }) => {
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    })
+
+    // console.log(result)
+
+    if (!result.cancelled) {
+      setImage(result.uri)
+    }
+  }
+
+  const pickFromCamera = async () => {
+    const result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [1, 1],
@@ -151,16 +186,27 @@ const ImageCapture: React.FC = ({ navigation }) => {
           </View>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity style={btnImageCaptureStyle} onPress={pickFromCamera}>
+        <View style={styles.flexBox}>
+          <View style={styles.leftIconStyle}>
+            <FontAwesomeIcon icon="camera" color={colors.orange} size={32} />
+          </View>
+
+          <View style={styles.midText}>
+            <Text style={cameraTextStyle}>Select from Camera</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
       <Image source={{ uri: image }} style={{ width: 299, height: 299 }} />
       {image && (
-        <TouchableOpacity style={btnImageCaptureStyle} onPress={sendImage}>
+        <TouchableOpacity style={btnImageClassifyStyle} onPress={sendImage}>
           <View style={styles.flexBox}>
             <View style={styles.leftIconStyle}>
-              <FontAwesomeIcon icon="camera" color={colors.white} size={32} />
+              <FontAwesomeIcon icon="search" color={colors.white} size={32} />
             </View>
 
             <View style={styles.midText}>
-              <Text style={cameraTextSTyle}>Classify Snake!</Text>
+              <Text style={classifyTextStyle}>Classify Snake!</Text>
             </View>
           </View>
         </TouchableOpacity>
