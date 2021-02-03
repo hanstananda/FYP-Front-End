@@ -85,14 +85,14 @@ const ImageCapture: React.FC = ({ navigation }) => {
           statusCamera,
         } = await ImagePicker.requestCameraPermissionsAsync()
         if (statusCamera !== 'granted') {
-          alert('We need camera permissions to make this work!')
+          // alert('We need camera permissions to make this work!')
         }
 
         const {
           status,
         } = await ImagePicker.requestMediaLibraryPermissionsAsync()
         if (status !== 'granted') {
-          alert('We need media library roll permissions to make this work!')
+          // alert('We need media library roll permissions to make this work!')
         }
       }
     })()
