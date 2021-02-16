@@ -12,6 +12,7 @@ import {
 import Button from 'components/Button'
 import { colors, images } from 'theme'
 import axios from 'axios'
+import { showMessage } from 'react-native-flash-message'
 import postLogin from '../../services/Auth'
 import { actions, authenticate } from '../../modules/app.module'
 import Connector from '../../utils/connector'
@@ -81,6 +82,19 @@ const LoginProfile = ({ navigation }) => {
         // setToken(resp.data.token)
       })
       .catch((error) => {
+        if (error.response) {
+          showMessage({
+            message: 'Login Error!',
+            description: 'invalid credentials entered',
+            type: 'danger',
+          })
+        } else {
+          showMessage({
+            message: 'Login Error!',
+            description: 'Unknown error occurred when trying to login',
+            type: 'danger',
+          })
+        }
         console.log(error)
       })
   }
