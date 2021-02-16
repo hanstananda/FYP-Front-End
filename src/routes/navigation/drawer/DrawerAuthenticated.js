@@ -12,6 +12,7 @@ import HeaderLeft from '../stacks/HeaderLeft'
 import HeaderTitle from '../stacks/HeaderTitle'
 import MapView from '../../../scenes/map'
 import {
+  ExpertClassificationNavigator,
   ImageCaptureNavigator,
   LogoutNavigator,
   MapViewNavigator,
@@ -41,10 +42,19 @@ const DrawerNavigatorAuthenticated = () => (
       }}
     />
     <Drawer.Screen
+      name="Expert Classification"
+      component={ExpertClassificationNavigator}
+      options={{
+        drawerIcon: ({ size }) => <FontAwesomeIcon icon="search" size={size} />,
+      }}
+    />
+    <Drawer.Screen
       name="Logout"
       component={LogoutNavigator}
       options={{
-        drawerIcon: ({ size }) => <FontAwesomeIcon icon="user" size={size} />,
+        drawerIcon: ({ size }) => (
+          <FontAwesomeIcon icon="sign-out-alt" size={size} />
+        ),
       }}
     />
     <Drawer.Screen

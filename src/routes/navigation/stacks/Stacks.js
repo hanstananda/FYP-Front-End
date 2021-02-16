@@ -7,6 +7,7 @@ import Details from 'scenes/snake_detail'
 import SnakeList from 'scenes/snake_list'
 import MapView from 'scenes/map'
 import ImageCapture from 'scenes/image_capture'
+import ExpertClassification from 'scenes/expert_classification'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
 import { UserContext } from '../../../utils/user-context'
@@ -102,6 +103,24 @@ export const ProfileNavigator = () => (
       options={{
         title: 'Details',
       }}
+    />
+  </Stack.Navigator>
+)
+
+export const ExpertClassificationNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="ExpertClassification"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="ExpertClassification"
+      component={ExpertClassification}
+      options={({ navigation }) => ({
+        title: 'Expert Classification',
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerTitle: () => <HeaderTitle />,
+      })}
     />
   </Stack.Navigator>
 )
