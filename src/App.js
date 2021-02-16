@@ -15,7 +15,9 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { imageAssets } from 'theme/images'
 import { fontAssets } from 'theme/fonts'
 import Constants from 'expo-constants'
+import FlashMessage from 'react-native-flash-message'
 import Router from './routes'
+import { UserProvider } from './utils/user-context'
 
 library.add(far, fas)
 
@@ -53,7 +55,10 @@ const App = () => {
   if (!didLoad) return <View />
   return (
     <Provider store={store}>
-      <Router />
+      <UserProvider>
+        <Router />
+        <FlashMessage position="bottom" />
+      </UserProvider>
     </Provider>
   )
 }

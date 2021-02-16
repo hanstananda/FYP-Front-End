@@ -11,9 +11,13 @@ import {
 } from 'react-native'
 import Button from 'components/Button'
 import { colors, images } from 'theme'
+import axios from 'axios'
+import { showMessage } from 'react-native-flash-message'
 import postLogin from '../../services/Auth'
 import { actions, authenticate } from '../../modules/app.module'
 import Connector from '../../utils/connector'
+
+import { UserContext } from '../../utils/user-context'
 
 const styles = StyleSheet.create({
   root: {
@@ -61,7 +65,7 @@ const styles = StyleSheet.create({
 const LoginProfile = ({ navigation }) => {
   const [username, onChangeUsername] = React.useState('Username')
   const [password, onChangePassword] = React.useState('Password')
-  const [token, setToken] = React.useState('')
+  const user = React.useContext(UserContext)
 
   const login = async () => {
     console.log('Login pressed!')
@@ -72,11 +76,26 @@ const LoginProfile = ({ navigation }) => {
       .then((resp) => {
         console.log('Login successful!')
         console.log(resp.data)
-        authenticate(resp.data.token)
-        setToken(resp.data.token)
+        axios.defaults.headers.common.Authorization = `Token ${resp.data.token}`
+        user.setID(resp.data.user_id)
+        // authenticate(resp.data.token)
+        // setToken(resp.data.token)
       })
       .catch((error) => {
-        console.log(error.response.data.error)
+        if (error.response) {
+          showMessage({
+            message: 'Login Error!',
+            description: 'invalid credentials entered',
+            type: 'danger',
+          })
+        } else {
+          showMessage({
+            message: 'Login Error!',
+            description: 'Unknown error occurred when trying to login',
+            type: 'danger',
+          })
+        }
+        console.log(error)
       })
   }
 

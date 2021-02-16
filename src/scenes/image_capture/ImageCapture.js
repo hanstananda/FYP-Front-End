@@ -12,6 +12,7 @@ import * as ImagePicker from 'expo-image-picker'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import postSnakeImage from 'services/SnakeImage/postSnakeImage'
+import { showMessage, hideMessage } from 'react-native-flash-message'
 import { buttonStyles, colors } from '../../theme'
 import postSnakeClassify from '../../services/SnakeClassify/postSnakeClassify'
 import getSnakeInfo from '../../services/SnakeInfo/getSnakeInfo'
@@ -150,7 +151,13 @@ const ImageCapture: React.FC = ({ navigation }) => {
         id = resp.data.id
       })
       .catch((error) => {
-        console.log(error.response.data.error)
+        console.log(error)
+        showMessage({
+          message: 'Error!',
+          description:
+            'Error occurred when trying to submit the selected image. Please try again later.',
+          type: 'danger',
+        })
       })
 
     let snakeClass = 0
@@ -164,7 +171,13 @@ const ImageCapture: React.FC = ({ navigation }) => {
         snakeClass = resp.data.classification
       })
       .catch((error) => {
-        console.log(error.response.data.error)
+        console.log(error)
+        showMessage({
+          message: 'Error!',
+          description:
+            'Error occurred when trying to get the species identification. Please try again later.',
+          type: 'danger',
+        })
       })
 
     await getSnakeInfo(snakeClass).then((resp) => {
