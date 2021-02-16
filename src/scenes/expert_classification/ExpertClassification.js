@@ -16,6 +16,8 @@ import { Picker } from '@react-native-picker/picker'
 import { defaultSnakeList } from 'utils/store'
 import getSnakeInfoList from '../../services/SnakeInfo/getSnakeInfoList'
 import getRandomSnakeImage from '../../services/SnakeImage/getRandomSnakeImage'
+import postSnakeClassify from '../../services/SnakeClassify/postSnakeClassify'
+import postExpertClassify from '../../services/SnakeClassify/postExpertClassify'
 
 const styles = StyleSheet.create({
   root: {
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     height: 50,
-    minWidth: 250,
+    minWidth: 300,
     backgroundColor: colors.blue,
     borderRadius: 25,
     alignItems: 'center',
@@ -49,8 +51,9 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   skipButton: {
+    marginTop: 20,
     height: 50,
-    minWidth: 250,
+    minWidth: 300,
     backgroundColor: colors.orange,
     borderRadius: 25,
     alignItems: 'center',
@@ -62,6 +65,14 @@ const styles = StyleSheet.create({
     color: colors.white,
     textTransform: 'uppercase',
   },
+  selectionItem: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  selectionMenu: {
+    height: 80,
+    minWidth: 300,
+  },
 })
 
 const ExpertClassification = ({ route, navigation }) => {
@@ -69,11 +80,7 @@ const ExpertClassification = ({ route, navigation }) => {
   const [valid, setValid] = useState(true)
   const [item, setItem] = useState({})
   const [itemList, setItemList] = useState(defaultSnakeList)
-  const [snakeSpeciesClassified, setSnakeSpeciesClassified] = useState(
-    'None selected',
-  )
-
-  const snakeSpeciesPickerList = itemList.map((s, i) => <Picker.Item key={s.id} value={s.name} label={s.name} />)
+  const [snakeSpeciesClassified, setSnakeSpeciesClassified] = useState(1)
 
   const getNewRandomSnakeImage = () => {
     getRandomSnakeImage().then(
@@ -84,6 +91,31 @@ const ExpertClassification = ({ route, navigation }) => {
         setGetError(err)
       },
     )
+  }
+
+  const snakeSpeciesPickerList = itemList.map((s, i) => (
+    <Picker.Item
+      key={s.id}
+      value={s.id}
+      label={`${s.name}(${s.latin_name})`}
+    />
+  ))
+
+  const expertSnakeClassify = async () => {
+    const payload = {
+      snake_image: item.id,
+      classification: snakeSpeciesClassified,
+    }
+    console.log(payload)
+    await postExpertClassify(payload)
+      .then((resp) => {
+        console.log('Manual species identification successfully sent!')
+        console.log(resp.data)
+        getNewRandomSnakeImage()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   useEffect(() => {
@@ -110,13 +142,18 @@ const ExpertClassification = ({ route, navigation }) => {
       </View>
       <Picker
         selectedValue={snakeSpeciesClassified}
-        style={{ height: 50, width: 200 }}
+        style={styles.selectionMenu}
+        dropdownIconColor="black"
+        itemStyle={styles.selectionItem}
         onValueChange={(itemValue, itemIndex) => setSnakeSpeciesClassified(itemValue)}
       >
         {snakeSpeciesPickerList}
       </Picker>
 
-      <TouchableOpacity style={styles.submitButton} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.submitButton}
+        onPress={expertSnakeClassify}
+      >
         <Text style={styles.submitText}>Submit</Text>
       </TouchableOpacity>
     </View>

@@ -18,7 +18,7 @@ const Routes = ({ actions, checked, loggedIn }) => {
 
   // rendering
   // if (!checked) return <Text>Loading...</Text>
-  if (user.id !== 1) {
+  if (user.id !== 0) {
     return <MainAuth />
   }
   return <Main />

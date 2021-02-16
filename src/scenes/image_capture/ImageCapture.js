@@ -150,7 +150,7 @@ const ImageCapture: React.FC = ({ navigation }) => {
         id = resp.data.id
       })
       .catch((error) => {
-        console.log(error.response.data.error)
+        console.log(error)
       })
 
     let snakeClass = 0
@@ -164,7 +164,7 @@ const ImageCapture: React.FC = ({ navigation }) => {
         snakeClass = resp.data.classification
       })
       .catch((error) => {
-        console.log(error.response.data.error)
+        console.log(error)
       })
 
     await getSnakeInfo(snakeClass).then((resp) => {

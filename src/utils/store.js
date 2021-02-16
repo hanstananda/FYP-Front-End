@@ -7,7 +7,7 @@ import app from 'modules/app.module'
 
 export const defaultSnakeList = [
   {
-    id: 0,
+    id: 1,
     name: 'Asian vine snake',
     latin_name: 'Ahaetulla prasine',
     description: 'mildly venomous, non harmful to humans',
@@ -16,7 +16,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 1,
+    id: 2,
     name: 'many-banded krait',
     latin_name: 'Bungarus multicinctus',
     description: 'venomous',
@@ -25,7 +25,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 2,
+    id: 3,
     name: 'golden tree snake',
     latin_name: 'Chrysopelea ornate',
     description:
@@ -35,7 +35,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 3,
+    id: 4,
     name: 'painted bronzeback',
     latin_name: 'Dendrelaphis pictus',
     description: 'non venomous',
@@ -44,7 +44,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 4,
+    id: 5,
     name: 'common mock viper',
     latin_name: 'Psammodynastes pulverulentus',
     description: 'non venomous',
@@ -53,7 +53,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 5,
+    id: 6,
     name: 'Indian rat snake',
     latin_name: 'Ptyas mucosa',
     description: 'non-venomous',
@@ -62,7 +62,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 6,
+    id: 7,
     name: 'red-necked keelback',
     latin_name: 'Rhabdophis subminiatus',
     description: 'venomous',
@@ -71,7 +71,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 7,
+    id: 8,
     name: 'white-lipped pit viper',
     latin_name: 'Trimeresurus albolabris',
     description: 'venomous',
@@ -80,7 +80,7 @@ export const defaultSnakeList = [
     },
   },
   {
-    id: 8,
+    id: 9,
     name: 'Reticulated Python',
     latin_name: 'Malayopython reticulatus',
     description: 'non-venomous',
