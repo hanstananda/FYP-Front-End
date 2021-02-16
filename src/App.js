@@ -16,6 +16,7 @@ import { imageAssets } from 'theme/images'
 import { fontAssets } from 'theme/fonts'
 import Constants from 'expo-constants'
 import Router from './routes'
+import { UserProvider } from './utils/user-context'
 
 library.add(far, fas)
 
@@ -53,7 +54,9 @@ const App = () => {
   if (!didLoad) return <View />
   return (
     <Provider store={store}>
-      <Router />
+      <UserProvider>
+        <Router />
+      </UserProvider>
     </Provider>
   )
 }

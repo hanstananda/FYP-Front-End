@@ -13,6 +13,7 @@ import HeaderTitle from '../stacks/HeaderTitle'
 import MapView from '../../../scenes/map'
 import {
   ImageCaptureNavigator,
+  LogoutNavigator,
   MapViewNavigator,
   SnakeListNavigator,
 } from '../stacks/Stacks'
@@ -39,13 +40,13 @@ const DrawerNavigatorAuthenticated = () => (
         drawerIcon: ({ size }) => <FontAwesomeIcon icon="home" size={size} />,
       }}
     />
-    {/* <Drawer.Screen */}
-    {/*  name="Profile" */}
-    {/*  component={ProfileNavigator} */}
-    {/*  options={{ */}
-    {/*    drawerIcon: ({ size }) => <FontAwesomeIcon icon="user" size={size} />, */}
-    {/*  }} */}
-    {/* /> */}
+    <Drawer.Screen
+      name="Logout"
+      component={LogoutNavigator}
+      options={{
+        drawerIcon: ({ size }) => <FontAwesomeIcon icon="user" size={size} />,
+      }}
+    />
     <Drawer.Screen
       name="Snake List"
       component={SnakeListNavigator}

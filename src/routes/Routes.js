@@ -4,8 +4,11 @@ import { Text } from 'react-native'
 import Connector from 'utils/connector'
 import Main from './navigation'
 import MainAuth from './navigationAuth'
+import { UserContext } from '../utils/user-context'
 
 const Routes = ({ actions, checked, loggedIn }) => {
+  const user = React.useContext(UserContext)
+
   useEffect(() => {
     // actions.authenticate()
   }, [])
@@ -15,7 +18,7 @@ const Routes = ({ actions, checked, loggedIn }) => {
 
   // rendering
   // if (!checked) return <Text>Loading...</Text>
-  if (loggedIn) {
+  if (user.id !== 1) {
     return <MainAuth />
   }
   return <Main />

@@ -9,6 +9,7 @@ import MapView from 'scenes/map'
 import ImageCapture from 'scenes/image_capture'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
+import { UserContext } from '../../../utils/user-context'
 
 // ------------------------------------
 // Constants
@@ -104,6 +105,12 @@ export const ProfileNavigator = () => (
     />
   </Stack.Navigator>
 )
+
+export const LogoutNavigator = () => {
+  const user = React.useContext(UserContext)
+  user.setID(0)
+  return ProfileNavigator()
+}
 
 export const SnakeListNavigator = () => (
   <Stack.Navigator
