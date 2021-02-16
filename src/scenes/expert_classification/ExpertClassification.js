@@ -14,10 +14,12 @@ import Button from 'components/Button'
 import { colors, images } from 'theme'
 import { Picker } from '@react-native-picker/picker'
 import { defaultSnakeList } from 'utils/store'
+import { showMessage, hideMessage } from 'react-native-flash-message'
 import getSnakeInfoList from '../../services/SnakeInfo/getSnakeInfoList'
 import getRandomSnakeImage from '../../services/SnakeImage/getRandomSnakeImage'
 import postSnakeClassify from '../../services/SnakeClassify/postSnakeClassify'
 import postExpertClassify from '../../services/SnakeClassify/postExpertClassify'
+import { UserProvider } from '../../utils/user-context'
 
 const styles = StyleSheet.create({
   root: {
@@ -94,11 +96,7 @@ const ExpertClassification = ({ route, navigation }) => {
   }
 
   const snakeSpeciesPickerList = itemList.map((s, i) => (
-    <Picker.Item
-      key={s.id}
-      value={s.id}
-      label={`${s.name}(${s.latin_name})`}
-    />
+    <Picker.Item key={s.id} value={s.id} label={`${s.name}(${s.latin_name})`} />
   ))
 
   const expertSnakeClassify = async () => {
@@ -112,9 +110,21 @@ const ExpertClassification = ({ route, navigation }) => {
         console.log('Manual species identification successfully sent!')
         console.log(resp.data)
         getNewRandomSnakeImage()
+        showMessage({
+          message: 'Success!',
+          description:
+            'Your species identification was submitted successfully!',
+          type: 'success',
+        })
       })
       .catch((error) => {
         console.log(error)
+        showMessage({
+          message: 'Error!',
+          description:
+            'Error occurred when trying to submit your species identification. Please try again later.',
+          type: 'danger',
+        })
       })
   }
 

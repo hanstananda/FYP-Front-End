@@ -84,15 +84,15 @@ export const HomeNavigator = () => (
 
 export const ProfileNavigator = () => (
   <Stack.Navigator
-    initialRouteName="Profile"
+    initialRouteName="Login"
     headerMode="screen"
     screenOptions={navigationProps}
   >
     <Stack.Screen
-      name="Profile"
+      name="Login"
       component={LoginProfile}
       options={({ navigation }) => ({
-        title: 'Profile',
+        title: 'Login',
         headerLeft: () => <HeaderLeft navigation={navigation} />,
         headerTitle: () => <HeaderTitle />,
       })}

@@ -48,15 +48,15 @@ const DrawerNavigatorAuthenticated = () => (
         drawerIcon: ({ size }) => <FontAwesomeIcon icon="search" size={size} />,
       }}
     />
+
     <Drawer.Screen
-      name="Logout"
-      component={LogoutNavigator}
+      name="Identify Snakes"
       options={{
-        drawerIcon: ({ size }) => (
-          <FontAwesomeIcon icon="sign-out-alt" size={size} />
-        ),
+        drawerIcon: ({ size }) => <FontAwesomeIcon icon="camera" size={size} />,
       }}
+      component={ImageCaptureNavigator}
     />
+
     <Drawer.Screen
       name="Snake List"
       component={SnakeListNavigator}
@@ -66,19 +66,23 @@ const DrawerNavigatorAuthenticated = () => (
         ),
       }}
     />
+
+    <Drawer.Screen
+      name="Logout"
+      component={LogoutNavigator}
+      options={{
+        drawerIcon: ({ size }) => (
+          <FontAwesomeIcon icon="sign-out-alt" size={size} />
+        ),
+      }}
+    />
+
     <Drawer.Screen
       name="Map View"
       component={MapViewNavigator}
       options={{
         drawerIcon: ({ size }) => <FontAwesomeIcon icon="map" size={size} />,
       }}
-    />
-    <Drawer.Screen
-      name="Identify Snakes"
-      options={{
-        drawerIcon: ({ size }) => <FontAwesomeIcon icon="camera" size={size} />,
-      }}
-      component={ImageCaptureNavigator}
     />
   </Drawer.Navigator>
 )
