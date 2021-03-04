@@ -4,9 +4,9 @@
     "slug": "snake-classifier",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/images/logo.png",
+    "icon": "./assets/images/logo-non-transparent.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -17,7 +17,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hanstananda.snakeclassifier"
     },
     "packagerOpts": {
       "config": "metro.config.js",
@@ -36,7 +37,12 @@
       ]
     },
     "android": {
-      "package": "com.hanstananda.snakeclassifier"
+      "package": "com.hanstananda.snakeclassifier",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBuEJ_JFXqCatqeRqBBcBXSUN_Tt5_HSTY"
+        }
+      }
     }
   }
 }
