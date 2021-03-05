@@ -15,6 +15,8 @@ import {
   ImageCaptureNavigator,
   MapViewNavigator,
   SnakeListNavigator,
+  TelNavigator,
+  SurveyFormNavigator,
 } from '../stacks/Stacks'
 
 const Drawer = createDrawerNavigator()
@@ -71,6 +73,22 @@ const DrawerNavigator = () => (
       component={MapViewNavigator}
       options={{
         drawerIcon: ({ size }) => <FontAwesomeIcon icon="map" size={size} />,
+      }}
+    />
+
+    <Drawer.Screen
+      name="Emergency Call"
+      component={TelNavigator}
+      options={{
+        drawerIcon: ({ size }) => <FontAwesomeIcon icon="phone" size={size} />,
+      }}
+    />
+
+    <Drawer.Screen
+      name="Survey Form"
+      component={SurveyFormNavigator}
+      options={{
+        drawerIcon: ({ size }) => <FontAwesomeIcon icon="poll" size={size} />,
       }}
     />
   </Drawer.Navigator>

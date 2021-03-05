@@ -9,6 +9,7 @@ import Report from 'scenes/snake_report'
 import MapView from 'scenes/map'
 import ImageCapture from 'scenes/image_capture'
 import ExpertClassification from 'scenes/expert_classification'
+import { Linking } from 'react-native'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
 import { UserContext } from '../../../utils/user-context'
@@ -125,6 +126,16 @@ export const ExpertClassificationNavigator = () => (
     />
   </Stack.Navigator>
 )
+
+export const TelNavigator = () => {
+  Linking.openURL('tel:1777')
+  return HomeNavigator()
+}
+
+export const SurveyFormNavigator = () => {
+  Linking.openURL('https://forms.gle/Hf3DAaMbm7LjnknA7')
+  return HomeNavigator()
+}
 
 export const LogoutNavigator = () => {
   const user = React.useContext(UserContext)
