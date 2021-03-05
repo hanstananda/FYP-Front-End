@@ -32,7 +32,7 @@ For security reasons, only the variables that starts with REACT_NATIVE_ or EXPO_
 // console.log(process.env.EXPO_BACKEND_URL)
 
 // axios.defaults.baseURL = process.env.EXPO_BACKEND_URL;
-axios.defaults.baseURL = 'http://192.168.0.100:8000'
+axios.defaults.baseURL = 'http://34.126.78.113:8000'
 
 console.log('Default base url is ', axios.defaults.baseURL)
 
