@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { Provider } from 'react-redux'
 import store from 'utils/store'
 import 'utils/ignore'
+import * as Location from 'expo-location'
 
 // Icons
 // import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -31,7 +32,7 @@ For security reasons, only the variables that starts with REACT_NATIVE_ or EXPO_
 // console.log(process.env.EXPO_BACKEND_URL)
 
 // axios.defaults.baseURL = process.env.EXPO_BACKEND_URL;
-axios.defaults.baseURL = 'http://34.126.78.113:8080'
+axios.defaults.baseURL = 'http://192.168.0.100:8000'
 
 console.log('Default base url is ', axios.defaults.baseURL)
 
@@ -49,6 +50,15 @@ const App = () => {
   // lifecycle
   useEffect(() => {
     handleLoadAssets()
+  }, [])
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Location.requestPermissionsAsync()
+      if (status !== 'granted') {
+        alert('We need location permissions to make this work!')
+      }
+    })()
   }, [])
 
   // rendering
