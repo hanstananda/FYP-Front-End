@@ -1,19 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-  StyleSheet, Text, View, StatusBar, Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  StatusBar,
+  Dimensions,
+  TouchableHighlight,
 } from 'react-native'
 import { colors } from 'theme'
 import MapView, { Marker } from 'react-native-maps'
-import getSnakeInfoList from '../../services/SnakeInfo/getSnakeInfoList'
-import { logout } from '../../modules/app.module'
+import * as Location from 'expo-location'
+import { showMessage } from 'react-native-flash-message'
+import getSnakeReportList from 'services/SnakeReport/getSnakeReportList'
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     backgroundColor: colors.lightGrayPurple,
   },
   title: {
@@ -21,19 +27,63 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    flex: 1,
+    minWidth: 300,
+  },
+  customView: {
+    width: 50,
+    backgroundColor: colors.orange,
+  },
+  calloutText: {
+    fontSize: 20,
   },
 })
 
 const MapScene = ({ navigation }) => {
+  const [markers, setMarkers] = useState([
+    {
+      id: 1,
+      title: 'Test',
+      description: 'Test',
+      coordinate: {
+        latitude: 1.35,
+        longitude: 103.68,
+      },
+    },
+  ])
   useEffect(() => {
-    logout()
+    getSnakeReportList().then(
+      (res) => {
+        const markersFromRequest = res.map((report) => ({
+          id: report.id,
+          coordinate: {
+            latitude: report.latitude,
+            longitude: report.longitude,
+          },
+          title: report.request.classification.name,
+          description: report.request.classification.short_desc,
+        }))
+        setMarkers(markersFromRequest)
+      },
+      (err) => {
+        showMessage({
+          message: 'Network Error!',
+          description:
+            'Network error occurred when trying to fetch snake sighting reports',
+          type: 'danger',
+        })
+        console.log(err)
+      },
+    )
   }, [])
   return (
-    <View style={styles.root}>
+    <SafeAreaView style={styles.root}>
       <StatusBar barStyle="light-content" />
       <MapView
+        followUserLocation
+        // ref={ref => (this.mapView = ref)}
+        zoomEnabled
+        showsUserLocation
         initialRegion={{
           latitude: 1.29,
           longitude: 103.85,
@@ -42,15 +92,26 @@ const MapScene = ({ navigation }) => {
         }}
         style={styles.map}
       >
-        <Marker
-          coordinate={{ latitude: 1.35, longitude: 103.68 }}
-          title="Asian Vine Snake"
-          description="Not that dangerous"
-        />
+        {markers.map((marker, index) => (
+          <Marker
+            key={marker.id}
+            coordinate={marker.coordinate}
+            title={marker.title}
+            description={marker.description}
+          >
+            {/* <MapView.Callout tooltip> */}
+            {/*  <TouchableHighlight onPress= {markerClick} underlayColor='#dddddd'> */}
+            {/*    <View style={styles.calloutText}> */}
+            {/*      <Text>{marker.title}{"\n"}{marker.description}</Text> */}
+            {/*    </View> */}
+            {/*  </TouchableHighlight> */}
+            {/* </MapView.Callout> */}
+          </Marker>
+        ))}
       </MapView>
 
       {/* <Text style={styles.title}>MapView - Pending Request Approval</Text> */}
-    </View>
+    </SafeAreaView>
   )
 }
 
