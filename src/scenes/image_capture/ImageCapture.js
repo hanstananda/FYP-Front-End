@@ -161,6 +161,7 @@ const ImageCapture: React.FC = ({ navigation }) => {
       })
 
     let snakeClass = 0
+    let snakeClassRequestId = 0
 
     await postSnakeClassify({
       snake_image: id,
@@ -168,6 +169,7 @@ const ImageCapture: React.FC = ({ navigation }) => {
       .then((resp) => {
         console.log('Classification successful!')
         console.log(resp.data)
+        snakeClassRequestId = resp.data.id
         snakeClass = resp.data.classification
       })
       .catch((error) => {
@@ -180,9 +182,12 @@ const ImageCapture: React.FC = ({ navigation }) => {
         })
       })
 
-    await getSnakeInfo(snakeClass).then((resp) => {
-      console.log(resp)
-      navigation.navigate('Details', { snakeInfo: resp })
+    await getSnakeInfo(snakeClass).then((respSnakeInfo) => {
+      console.log(respSnakeInfo)
+      navigation.navigate('Report', {
+        snakeInfo: respSnakeInfo,
+        snakeClassRequestId,
+      })
     })
   }
 

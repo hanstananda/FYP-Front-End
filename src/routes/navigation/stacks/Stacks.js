@@ -5,6 +5,7 @@ import Home from 'scenes/home'
 import LoginProfile from 'scenes/profile'
 import Details from 'scenes/snake_detail'
 import SnakeList from 'scenes/snake_list'
+import Report from 'scenes/snake_report'
 import MapView from 'scenes/map'
 import ImageCapture from 'scenes/image_capture'
 import ExpertClassification from 'scenes/expert_classification'
@@ -201,6 +202,13 @@ export const ImageCaptureNavigator = () => (
       component={Details}
       options={{
         title: 'Details',
+      }}
+    />
+    <Stack.Screen
+      name="Report"
+      component={Report}
+      options={{
+        title: 'Report',
       }}
     />
   </Stack.Navigator>

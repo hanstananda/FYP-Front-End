@@ -13,11 +13,15 @@ import {
 import Button from 'components/Button'
 import { buttonStyles, colors, images } from 'theme'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import postSnakeReport from 'services/SnakeReport/postSnakeReport'
+import { showMessage } from 'react-native-flash-message'
+import * as Location from 'expo-location'
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     flexDirection: 'column',
+    alignItems: 'center',
     backgroundColor: colors.white,
   },
   centeredContent: {
@@ -47,12 +51,30 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     color: colors.black,
   },
+  flexBox: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 5,
+    maxWidth: 300,
+  },
+  leftIconStyle: {
+    flex: 0.15,
+    alignItems: 'center', // Centered horizontally
+    justifyContent: 'center', // Centered vertically
+  },
+  midText: {
+    flex: 0.85,
+    paddingLeft: 20,
+    alignItems: 'flex-start',
+    justifyContent: 'center', // Centered vertically
+  },
   btnText: {
     fontSize: 20,
     fontWeight: 'bold',
   },
   btnReport: {
-    marginTop: 15,
+    marginTop: 0,
+    marginBottom: 0,
   },
 })
 
@@ -60,13 +82,48 @@ const Report = ({ route, navigation }) => {
   const [valid, setValid] = useState(true)
   const { from } = route.params
   const { snakeInfo } = route.params
-  console.log(route.params.from)
-  const cameraTextStyle = [styles.btnText, { color: colors.orange }]
+  const snakeSightingText = [styles.btnText, { color: colors.white }]
   const btnSnakeReportStyle = [
     buttonStyles.defaultButtonStyle,
-    buttonStyles.altButtonStyle2,
+    buttonStyles.mainButtonStyle,
     styles.btnReport,
   ]
+
+  const reportSnakeSighting = async () => {
+    const { status } = await Location.requestPermissionsAsync()
+    if (status !== 'granted') {
+      showMessage({
+        message: 'Error!',
+        description: 'Permission to access location was denied.',
+        type: 'danger',
+      })
+      return
+    }
+    const location = await Location.getCurrentPositionAsync({})
+    await postSnakeReport({
+      request: route.params.snakeClassRequestId,
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    })
+      .then((resp) => {
+        console.log('Reporting successful!')
+        console.log(resp.data)
+        showMessage({
+          message: 'Success!',
+          description: 'Your snake sighting report was submitted successfully!',
+          type: 'success',
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+        showMessage({
+          message: 'Error!',
+          description:
+            'Error occurred when trying to submit the sighting report. Please try again later.',
+          type: 'danger',
+        })
+      })
+  }
 
   return (
     <SafeAreaView style={styles.root}>
@@ -78,25 +135,29 @@ const Report = ({ route, navigation }) => {
             style={styles.logo}
             source={valid ? { uri: snakeInfo.image.image } : images.logo_lg}
           />
+          <TouchableOpacity
+            style={btnSnakeReportStyle}
+            onPress={reportSnakeSighting}
+          >
+            <View style={styles.flexBox}>
+              <View style={styles.leftIconStyle}>
+                <FontAwesomeIcon
+                  icon="exclamation-circle"
+                  color={colors.white}
+                  size={32}
+                />
+              </View>
+
+              <View style={styles.midText}>
+                <Text style={snakeSightingText}>Report snake sighting!</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
           <Text style={styles.titleDetails}>{snakeInfo.name}</Text>
           <Text style={styles.subtitleDetails}>({snakeInfo.latin_name})</Text>
+          <Text style={styles.descDetails}>{snakeInfo.description}</Text>
         </View>
-        <Text style={styles.descDetails}>{snakeInfo.description}</Text>
-        <TouchableOpacity style={btnSnakeReportStyle} onPress={() => {}}>
-          <View style={styles.flexBox}>
-            <View style={styles.leftIconStyle}>
-              <FontAwesomeIcon
-                icon="exclamation-circle"
-                color={colors.orange}
-                size={32}
-              />
-            </View>
 
-            <View style={styles.midText}>
-              <Text style={cameraTextStyle}>Report Snake sighting!</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
         {/* <Text style={styles.title}>{`Details (from ${from})`}</Text> */}
         {/* <Button */}
         {/*  title="Go Back" */}
@@ -124,6 +185,7 @@ Report.propTypes = {
           image: PropTypes.string,
         }),
       }),
+      snakeClassRequestId: PropTypes.number,
     }),
 
     goBack: PropTypes.func,
@@ -144,6 +206,7 @@ Report.defaultProps = {
           image: 'sample_snake',
         },
       },
+      snakeClassRequestId: 0,
     },
   },
   navigation: {
