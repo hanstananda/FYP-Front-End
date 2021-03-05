@@ -182,13 +182,22 @@ const ImageCapture: React.FC = ({ navigation }) => {
         })
       })
 
-    await getSnakeInfo(snakeClass).then((respSnakeInfo) => {
-      console.log(respSnakeInfo)
-      navigation.navigate('Report', {
-        snakeInfo: respSnakeInfo,
-        snakeClassRequestId,
+    if (snakeClass === 10) {
+      await getSnakeInfo(snakeClass).then((respSnakeInfo) => {
+        console.log(respSnakeInfo)
+        navigation.navigate('Details', {
+          snakeInfo: respSnakeInfo,
+        })
       })
-    })
+    } else {
+      await getSnakeInfo(snakeClass).then((respSnakeInfo) => {
+        console.log(respSnakeInfo)
+        navigation.navigate('Report', {
+          snakeInfo: respSnakeInfo,
+          snakeClassRequestId,
+        })
+      })
+    }
   }
 
   return (
