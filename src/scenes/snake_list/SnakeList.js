@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 import snakesInfoReducer from 'modules/SnakesInfo.module'
 import getSnakeInfoList from 'services/SnakeInfo/getSnakeInfoList'
 import { defaultSnakeList } from 'utils/store'
+import { showMessage } from 'react-native-flash-message'
 // import SnakeInfo from 'services/SnakeInfo'
 
 const styles = StyleSheet.create({
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
 })
 
 const SnakeList = ({ navigation }) => {
-  const [getError, setGetError] = useState(null)
   const [itemList, setItemList] = useState(defaultSnakeList)
 
   // Note: the empty deps array [] means
@@ -50,7 +50,12 @@ const SnakeList = ({ navigation }) => {
         setItemList(data)
       },
       (err) => {
-        setGetError(err)
+        showMessage({
+          message: 'Network Error!',
+          description: 'Network error occurred when trying to fetch snake list',
+          type: 'danger',
+        })
+        console.log(err)
       },
     )
   }, [])
