@@ -7,6 +7,8 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
 } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import PropTypes from 'prop-types'
@@ -201,44 +203,50 @@ const ImageCapture: React.FC = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.root}>
-      <TouchableOpacity style={btnImageFromFileStyle} onPress={pickImage}>
-        <View style={styles.flexBox}>
-          <View style={styles.leftIconStyle}>
-            <FontAwesomeIcon icon="folder" color={colors.darkGreen} size={32} />
-          </View>
-
-          <View style={styles.midText}>
-            <Text style={folderTextStyle}>Select from Files</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={btnImageCaptureStyle} onPress={pickFromCamera}>
-        <View style={styles.flexBox}>
-          <View style={styles.leftIconStyle}>
-            <FontAwesomeIcon icon="camera" color={colors.orange} size={32} />
-          </View>
-
-          <View style={styles.midText}>
-            <Text style={cameraTextStyle}>Select from Camera</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-      <Image source={{ uri: image }} style={{ width: 299, height: 299 }} />
-      {image && (
-        <TouchableOpacity style={btnImageClassifyStyle} onPress={sendImage}>
+    <SafeAreaView style={styles.root}>
+      <ScrollView>
+        <TouchableOpacity style={btnImageFromFileStyle} onPress={pickImage}>
           <View style={styles.flexBox}>
             <View style={styles.leftIconStyle}>
-              <FontAwesomeIcon icon="search" color={colors.white} size={32} />
+              <FontAwesomeIcon
+                icon="folder"
+                color={colors.darkGreen}
+                size={32}
+              />
             </View>
 
             <View style={styles.midText}>
-              <Text style={classifyTextStyle}>Classify Snake!</Text>
+              <Text style={folderTextStyle}>Select from Files</Text>
             </View>
           </View>
         </TouchableOpacity>
-      )}
-    </View>
+        <TouchableOpacity style={btnImageCaptureStyle} onPress={pickFromCamera}>
+          <View style={styles.flexBox}>
+            <View style={styles.leftIconStyle}>
+              <FontAwesomeIcon icon="camera" color={colors.orange} size={32} />
+            </View>
+
+            <View style={styles.midText}>
+              <Text style={cameraTextStyle}>Select from Camera</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <Image source={{ uri: image }} style={{ width: 299, height: 299 }} />
+        {image && (
+          <TouchableOpacity style={btnImageClassifyStyle} onPress={sendImage}>
+            <View style={styles.flexBox}>
+              <View style={styles.leftIconStyle}>
+                <FontAwesomeIcon icon="search" color={colors.white} size={32} />
+              </View>
+
+              <View style={styles.midText}>
+                <Text style={classifyTextStyle}>Classify Snake!</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 

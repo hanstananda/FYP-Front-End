@@ -133,40 +133,41 @@ const ExpertClassification = ({ route, navigation }) => {
   }, [])
 
   return (
-    <View style={styles.root}>
+    <SafeAreaView style={styles.root}>
       <StatusBar barStyle="light-content" />
+      <ScrollView>
+        <TouchableOpacity
+          style={styles.skipButton}
+          onPress={getNewRandomSnakeImage}
+        >
+          <Text style={styles.skipText}>Skip</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.skipButton}
-        onPress={getNewRandomSnakeImage}
-      >
-        <Text style={styles.skipText}>Skip</Text>
-      </TouchableOpacity>
+        <View style={styles.centeredContent}>
+          <Image
+            onError={() => setValid(false)}
+            style={styles.logo}
+            source={valid ? { uri: item.image } : images.logo_lg}
+          />
+        </View>
+        <Picker
+          selectedValue={snakeSpeciesClassified}
+          style={styles.selectionMenu}
+          dropdownIconColor="black"
+          itemStyle={styles.selectionItem}
+          onValueChange={(itemValue, itemIndex) => setSnakeSpeciesClassified(itemValue)}
+        >
+          {snakeSpeciesPickerList}
+        </Picker>
 
-      <View style={styles.centeredContent}>
-        <Image
-          onError={() => setValid(false)}
-          style={styles.logo}
-          source={valid ? { uri: item.image } : images.logo_lg}
-        />
-      </View>
-      <Picker
-        selectedValue={snakeSpeciesClassified}
-        style={styles.selectionMenu}
-        dropdownIconColor="black"
-        itemStyle={styles.selectionItem}
-        onValueChange={(itemValue, itemIndex) => setSnakeSpeciesClassified(itemValue)}
-      >
-        {snakeSpeciesPickerList}
-      </Picker>
-
-      <TouchableOpacity
-        style={styles.submitButton}
-        onPress={expertSnakeClassify}
-      >
-        <Text style={styles.submitText}>Submit</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={expertSnakeClassify}
+        >
+          <Text style={styles.submitText}>Submit</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 

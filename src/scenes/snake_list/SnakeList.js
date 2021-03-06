@@ -63,22 +63,23 @@ const SnakeList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.root}>
       <StatusBar barStyle="light-content" />
-      <FlatList
-        data={itemList}
-        renderItem={({ item }) => (
-          <View style={styles.main}>
-            <SnakeItem
-              title={item.name}
-              subtitle={item.latin_name}
-              image={item.image}
-              onPress={() => {
-                navigation.navigate('Details', { snakeInfo: item })
-              }}
-            />
-          </View>
-        )}
-      />
-      <ScrollView style={styles.scrollView}>{/* {itemSetter} */}</ScrollView>
+      <ScrollView style={styles.scrollView}>
+        <FlatList
+          data={itemList}
+          renderItem={({ item }) => (
+            <View style={styles.main}>
+              <SnakeItem
+                title={item.name}
+                subtitle={item.latin_name}
+                image={item.image}
+                onPress={() => {
+                  navigation.navigate('Details', { snakeInfo: item })
+                }}
+              />
+            </View>
+          )}
+        />
+      </ScrollView>
     </SafeAreaView>
   )
 }
