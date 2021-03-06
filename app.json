@@ -4,9 +4,9 @@
     "slug": "snake-classifier",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
-    "version": "1.1.0",
+    "version": "1.2.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo-non-transparent.png",
+    "icon": "./assets/images/logo.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -38,7 +38,7 @@
     },
     "android": {
       "package": "com.hanstananda.snakeclassifier",
-      "versionCode": 3,
+      "versionCode": 5,
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyBuEJ_JFXqCatqeRqBBcBXSUN_Tt5_HSTY"
