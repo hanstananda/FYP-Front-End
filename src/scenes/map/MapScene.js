@@ -51,6 +51,13 @@ const MapScene = ({ navigation }) => {
       },
     },
   ])
+  const [region, setRegion] = useState({
+    latitude: 1.29,
+    longitude: 103.85,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  })
+
   useEffect(() => {
     getSnakeReportList().then(
       (res) => {
@@ -76,20 +83,37 @@ const MapScene = ({ navigation }) => {
       },
     )
   }, [])
+  useEffect(() => {
+    (async () => {
+      const { status } = await Location.requestPermissionsAsync()
+      if (status !== 'granted') {
+        showMessage({
+          message: 'Error!',
+          description: 'Permission to access location was denied.',
+          type: 'danger',
+        })
+        return
+      }
+
+      const location = await Location.getCurrentPositionAsync({})
+      console.log(location)
+      setRegion({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: region.latitudeDelta,
+        longitudeDelta: region.longitudeDelta,
+      })
+    })()
+  }, [])
   return (
     <SafeAreaView style={styles.root}>
-      <StatusBar barStyle="light-content" />
+      {/* <StatusBar barStyle="light-content" /> */}
+
       <MapView
         followUserLocation
-        // ref={ref => (this.mapView = ref)}
         zoomEnabled
         showsUserLocation
-        initialRegion={{
-          latitude: 1.29,
-          longitude: 103.85,
-          latitudeDelta: 0.01,
-          longitudeDelta: 0.01,
-        }}
+        region={region}
         style={styles.map}
       >
         {markers.map((marker, index) => (
