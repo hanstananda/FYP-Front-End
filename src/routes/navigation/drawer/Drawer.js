@@ -51,20 +51,12 @@ const DrawerNavigator = () => (
     />
 
     <Drawer.Screen
-      name="Snake List"
+      name="Snake Guide"
       component={SnakeListNavigator}
       options={{
         drawerIcon: ({ size }) => (
           <FontAwesomeIcon icon="info-circle" size={size} />
         ),
-      }}
-    />
-
-    <Drawer.Screen
-      name="Login"
-      component={ProfileNavigator}
-      options={{
-        drawerIcon: ({ size }) => <FontAwesomeIcon icon="user" size={size} />,
       }}
     />
 
@@ -81,6 +73,14 @@ const DrawerNavigator = () => (
       component={TelNavigator}
       options={{
         drawerIcon: ({ size }) => <FontAwesomeIcon icon="phone" size={size} />,
+      }}
+    />
+
+    <Drawer.Screen
+      name="Login"
+      component={ProfileNavigator}
+      options={{
+        drawerIcon: ({ size }) => <FontAwesomeIcon icon="user" size={size} />,
       }}
     />
 

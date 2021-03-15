@@ -112,6 +112,7 @@ const MapScene = ({ navigation }) => {
       <MapView
         followUserLocation
         zoomEnabled
+        minZoomLevel={12}
         showsUserLocation
         region={region}
         style={styles.map}
