@@ -1,5 +1,7 @@
 {
   "expo": {
+    "owner": "hanstananda",
+    "description": "This project aims to develop a mobile application to detect and collect snake sightings for the general public on mobile platform, with the help of crowdsourcing. This application also includes a classifier that has been trained to detect and classify snakes that are commonly found in Asia. ",
     "name": "snake-classifier",
     "slug": "snake-classifier",
     "privacy": "public",
