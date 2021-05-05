@@ -29,6 +29,16 @@ Run the following command in terminal to start the application and follow the in
 expo start
 ```
 
+## Deploying the application
+This project has been setup with a [Github CI Action](https://github.com/features/actions) to automatically publish the latest version to the Expo site. Refer to the [Github code workflow](.github/workflows/main.yml) of this project for more details. 
+
+Follow the instructions on [Expo standalone build guide](https://docs.expo.io/distribution/building-standalone-apps/) for detailed information of publishing an expo application. 
+To build the expo application into an android `.apk` or `.aab` file, use the following command: 
+```bash
+expo build:android
+```
+Afterwards, follow the [Expo instructions](https://docs.expo.io/distribution/uploading-apps/) to upload the application to Google Play Store or App Store.
+
 ## Libraries
 
 The following are the main libraries installed in this project:
@@ -82,5 +92,8 @@ It's very important to keep code clean to maintain readability and productivity.
 
 ## Licence
 
-This project is available under the MIT license. See the [LICENSE](LICENSE) file for more info. The snake logo is provided by [Flaticon](https://www.flaticon.com/). Other icons are provided by [Font Awesome](https://fontawesome.com/). Snake images used are taken from Wikipedia. 
+This project is available under the MIT license. See the [LICENSE](LICENSE) file for more info. 
+The snake logo is provided by [Flaticon](https://www.flaticon.com/). 
+Other icons are provided by [Font Awesome](https://fontawesome.com/). 
+Snake images used are taken from Wikipedia and iNaturalist. 
 
