@@ -128,7 +128,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity
         style={btnInfoStyle}
         onPress={() => {
-          navigation.navigate('Snake List', { from: 'Home' })
+          navigation.navigate('Snake Guide', { from: 'Home' })
         }}
       >
         <View
